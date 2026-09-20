@@ -1,0 +1,139 @@
+{
+  "pler": [
+    {
+      "file": "01-comparison.png",
+      "caption": "Result - mesh comparison",
+      "bytes": 530895
+    },
+    {
+      "file": "02-convergence.png",
+      "caption": "Result - convergence",
+      "bytes": 136426
+    },
+    {
+      "file": "03-ray-analysis.png",
+      "caption": "Result - ray analysis",
+      "bytes": 471988
+    },
+    {
+      "file": "04-method.png",
+      "caption": "Paper - method figure",
+      "bytes": 58380
+    },
+    {
+      "file": "05-fibonacci.png",
+      "caption": "Paper - Fibonacci sampling",
+      "bytes": 69550
+    },
+    {
+      "file": "06-ui.png",
+      "caption": "UI - comparison view",
+      "bytes": 250926
+    }
+  ],
+  "bench": [
+    {
+      "file": "01-principle.png",
+      "caption": "Diagram - principle",
+      "bytes": 42864
+    },
+    {
+      "file": "02-architecture.png",
+      "caption": "Diagram - architecture",
+      "bytes": 74333
+    },
+    {
+      "file": "03-coverage.png",
+      "caption": "Result - coverage",
+      "bytes": 98035
+    },
+    {
+      "file": "04-taxonomy.png",
+      "caption": "Diagram - taxonomy",
+      "bytes": 74492
+    },
+    {
+      "file": "05-factorial.png",
+      "caption": "Result - factorial",
+      "bytes": 57395
+    },
+    {
+      "file": "06-ui.png",
+      "caption": "UI - Streamlit bench",
+      "bytes": 202947
+    }
+  ],
+  "rag": [
+    {
+      "file": "01-ui.png",
+      "caption": "UI - assistant console",
+      "bytes": 286175
+    },
+    {
+      "file": "02-overview.png",
+      "caption": "Overview",
+      "bytes": 37846
+    },
+    {
+      "file": "03-kb.png",
+      "caption": "UI - knowledge base build",
+      "bytes": 309272
+    }
+  ],
+  "ai-team": [
+    {
+      "file": "01-ui.png",
+      "caption": "UI - FastAPI agent desk",
+      "bytes": 234451
+    },
+    {
+      "file": "02-overview.png",
+      "caption": "Overview",
+      "bytes": 37995
+    },
+    {
+      "file": "03-verify.png",
+      "caption": "UI - verifier / methodology",
+      "bytes": 246633
+    }
+  ],
+  "anc": [
+    {
+      "file": "01-ir.png",
+      "caption": "Result - secondary-path IR",
+      "bytes": 56504
+    },
+    {
+      "file": "02-lab.png",
+      "caption": "UI - IR lab view",
+      "bytes": 208710
+    },
+    {
+      "file": "03-overview.png",
+      "caption": "Overview",
+      "bytes": 35758
+    },
+    {
+      "file": "04-sim.png",
+      "caption": "Result - FxLMS error decay",
+      "bytes": 269771
+    }
+  ],
+  "acoustic": [
+    {
+      "file": "01-ui.png",
+      "caption": "UI - PyQt localization",
+      "bytes": 269581
+    },
+    {
+      "file": "02-overview.png",
+      "caption": "Overview",
+      "bytes": 35056
+    },
+    {
+      "file": "03-spectrogram.png",
+      "caption": "UI - spectrogram / export",
+      "bytes": 286767
+    }
+  ]
+}

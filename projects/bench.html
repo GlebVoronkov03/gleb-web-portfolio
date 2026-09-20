@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>3D Quality Bench — Gleb Voronkov</title>
-  <meta name="description" content="Streamlit multi-metric QA + MOS." />
-  <meta property="og:title" content="3D Quality Bench — Gleb Voronkov" />
-  <meta property="og:description" content="Streamlit multi-metric QA + MOS." />
-  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
+  <meta name="description" content="Streamlit multi-metric 3D QA with degradations and MOS correlations." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -19,7 +16,7 @@
     <a class="nav-brand" href="../index.html">Gleb Voronkov</a>
     <div class="nav-links">
       <a href="../index.html" data-nav="home">Home</a>
-      <a href="../projects/index.html" data-nav="work">Work</a>
+      <a href="index.html" data-nav="work">Work</a>
       <a href="../publications.html" data-nav="pubs">Publications</a>
       <a href="../about.html" data-nav="about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
@@ -29,18 +26,61 @@
 
 <section class="page-hero"><div class="wrap">
   <h1>3D Quality Bench</h1>
-  <p class="tagline">Streamlit multi-metric QA + MOS.</p>
-  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/3d-quality-bench" target="_blank" rel="noopener">GitHub</a><a class="chip-link secondary" href="pler.html">PLER</a></div>
+  <p class="tagline">Streamlit multi-metric 3D QA with degradations and MOS correlations.</p>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/3d-quality-bench" target="_blank" rel="noopener">GitHub</a><a class="chip-link" href="../assets/papers/user-assessments-3d-xr.pdf" target="_blank" rel="noopener">XR paper</a><a class="chip-link secondary" href="pler.html">PLER</a></div>
 </div></section>
 <main class="wrap">
-  <div class="cover-band reveal"><img src="../assets/covers/cover-bench.png" alt="" /></div>
-  <div data-diagram="bench"></div>
-  <div class="prose reveal"><h2>Problem</h2><p>Need degrade → measure → correlate for XR research.</p>
-<h2>Interactive scheme</h2><p>Follow the research loop nodes.</p><p class="note">Non-commercial research license.</p></div>
+  <div class="cover-band reveal"><img src="../assets/gallery/bench/01-principle.png" alt="" /></div>
+  <section class="section-block">
+    <p class="section-kicker">Logic</p>
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub" style="margin-bottom:1rem">Detailed interactive control-flow — hover or tap nodes.</p>
+    <div data-diagram="bench" data-detailed="1"></div>
+  </section>
+  <section class="section-block prose reveal">
+    <p class="section-kicker">Description</p>
+    <h2 class="section-title">Project narrative</h2>
+    <h2>What it does</h2>
+<p>Degrade meshes, compute 20+ full-reference metrics (including PLER), correlate with MOS (PLCC / SROCC / Kendall).</p>
+<h2>Pipeline</h2>
+<p>Import fixtures → noise/smooth/decimate/hybrid → metric battery → normalize → correlation plots. Cross-linked with the PLER library.</p>
+    <p class="note">Non-commercial research license.</p>
+  </section>
+  
+  <section class="section-block reveal">
+    <p class="section-kicker">In action</p>
+    <h2 class="section-title">Screenshot carousel</h2>
+    <div class="carousel" data-carousel data-captions='["Diagram - principle", "Diagram - architecture", "Result - coverage", "Diagram - taxonomy", "Result - factorial", "UI - Streamlit bench"]'>
+      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/bench/01-principle.png" alt="Diagram - principle" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/02-architecture.png" alt="Diagram - architecture" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/03-coverage.png" alt="Result - coverage" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/04-taxonomy.png" alt="Diagram - taxonomy" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/05-factorial.png" alt="Result - factorial" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/06-ui.png" alt="UI - Streamlit bench" loading="lazy" /></div></div></div>
+      <div class="carousel-caption"><strong data-cap>Diagram - principle</strong>
+        <div class="carousel-nav">
+          <button class="carousel-btn" type="button" data-prev aria-label="Previous">‹</button>
+          <button class="carousel-btn" type="button" data-next aria-label="Next">›</button>
+        </div>
+      </div>
+      <div class="carousel-dots"><button type="button" data-dot="0" aria-label="Slide 1" class="active"></button><button type="button" data-dot="1" aria-label="Slide 2"></button><button type="button" data-dot="2" aria-label="Slide 3"></button><button type="button" data-dot="3" aria-label="Slide 4"></button><button type="button" data-dot="4" aria-label="Slide 5"></button><button type="button" data-dot="5" aria-label="Slide 6"></button></div>
+    </div>
+  </section>
+
+  
+  <section class="section-block reveal">
+    <p class="section-kicker">Demo</p>
+    <h2 class="section-title">Short walkthrough</h2>
+    <div class="demo-video">
+      <video controls playsinline preload="metadata" poster="../assets/gallery/bench/01-principle.png">
+        <source src="../assets/videos/bench-demo.mp4" type="video/mp4" />
+      </video>
+      <div class="meta">
+        <span>3D Quality Bench - under 30s</span>
+        <span>Swap in a live screen capture when ready</span>
+      </div>
+    </div>
+  </section>
+
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
+  <div>© 2026 Gleb Voronkov - MTUCI - Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> - <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
 </div></footer>
 <script src="../app.js"></script>
 </body></html>

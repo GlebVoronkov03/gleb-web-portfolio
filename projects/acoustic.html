@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Acoustic Localization Tester — Gleb Voronkov</title>
-  <meta name="description" content="ILD/ITD stereo lab at 48 kHz." />
-  <meta property="og:title" content="Acoustic Localization Tester — Gleb Voronkov" />
-  <meta property="og:description" content="ILD/ITD stereo lab at 48 kHz." />
-  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
+  <meta name="description" content="PyQt6 ILD/ITD stereo stimulus tester at 48 kHz." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -19,7 +16,7 @@
     <a class="nav-brand" href="../index.html">Gleb Voronkov</a>
     <div class="nav-links">
       <a href="../index.html" data-nav="home">Home</a>
-      <a href="../projects/index.html" data-nav="work">Work</a>
+      <a href="index.html" data-nav="work">Work</a>
       <a href="../publications.html" data-nav="pubs">Publications</a>
       <a href="../about.html" data-nav="about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
@@ -29,18 +26,61 @@
 
 <section class="page-hero"><div class="wrap">
   <h1>Acoustic Localization Tester</h1>
-  <p class="tagline">ILD/ITD stereo lab at 48 kHz.</p>
+  <p class="tagline">PyQt6 ILD/ITD stereo stimulus tester at 48 kHz.</p>
   <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/acoustic-localization" target="_blank" rel="noopener">GitHub</a><a class="chip-link secondary" href="anc.html">ANC</a></div>
 </div></section>
 <main class="wrap">
-  <div class="cover-band reveal"><img src="../assets/covers/cover-acoustic.png" alt="" /></div>
-  <div data-diagram="acoustic"></div>
-  <div class="prose reveal"><h2>Problem</h2><p>Localization studies need controlled cues and sessions.</p>
-<h2>Interactive scheme</h2><p>Generator → ILD/ITD → session export.</p></div>
+  <div class="cover-band reveal"><img src="../assets/gallery/acoustic/01-ui.png" alt="" /></div>
+  <section class="section-block">
+    <p class="section-kicker">Logic</p>
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub" style="margin-bottom:1rem">Detailed interactive control-flow — hover or tap nodes.</p>
+    <div data-diagram="acoustic" data-detailed="1"></div>
+  </section>
+  <section class="section-block prose reveal">
+    <p class="section-kicker">Description</p>
+    <h2 class="section-title">Project narrative</h2>
+    <h2>What it does</h2>
+<p>Generate controlled ILD/ITD stimuli, build sessions, export WAV, inspect oscillograms / spectrograms.</p>
+<h2>Pipeline</h2>
+<p>Position &amp; panning law → synthesize signal → ADSR → play/export → visualize. Seven presets; intensity/time/mixed modes.</p>
+    
+  </section>
+  
+  <section class="section-block reveal">
+    <p class="section-kicker">In action</p>
+    <h2 class="section-title">Screenshot carousel</h2>
+    <div class="carousel" data-carousel data-captions='["UI - PyQt localization", "Overview", "UI - spectrogram / export"]'>
+      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/acoustic/01-ui.png" alt="UI - PyQt localization" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/acoustic/02-overview.png" alt="Overview" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/acoustic/03-spectrogram.png" alt="UI - spectrogram / export" loading="lazy" /></div></div></div>
+      <div class="carousel-caption"><strong data-cap>UI - PyQt localization</strong>
+        <div class="carousel-nav">
+          <button class="carousel-btn" type="button" data-prev aria-label="Previous">‹</button>
+          <button class="carousel-btn" type="button" data-next aria-label="Next">›</button>
+        </div>
+      </div>
+      <div class="carousel-dots"><button type="button" data-dot="0" aria-label="Slide 1" class="active"></button><button type="button" data-dot="1" aria-label="Slide 2"></button><button type="button" data-dot="2" aria-label="Slide 3"></button></div>
+    </div>
+  </section>
+
+  
+  <section class="section-block reveal">
+    <p class="section-kicker">Demo</p>
+    <h2 class="section-title">Short walkthrough</h2>
+    <div class="demo-video">
+      <video controls playsinline preload="metadata" poster="../assets/gallery/acoustic/01-ui.png">
+        <source src="../assets/videos/acoustic-demo.mp4" type="video/mp4" />
+      </video>
+      <div class="meta">
+        <span>Acoustic Localization Tester - under 30s</span>
+        <span>Swap in a live screen capture when ready</span>
+      </div>
+    </div>
+  </section>
+
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
+  <div>© 2026 Gleb Voronkov - MTUCI - Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> - <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
 </div></footer>
 <script src="../app.js"></script>
 </body></html>

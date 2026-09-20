@@ -186,40 +186,59 @@
   // ----- Interactive SVG diagrams -----
   const tips = {
     pler: {
-      sphere: ["Bounding sphere", "Reference and distorted meshes share one enclosing sphere; radius normalizes scale."],
-      rays: ["Fibonacci rays", "Sample points on the sphere via golden spiral — PLER 2.0 fix for uneven coverage."],
-      mesh: ["Mesh surface", "Ray hit lengths on reference vs test form an MSE mapped to the PLER score."],
-      score: ["PLER score", "Log-scaled fidelity score — sensitive where low quality is perceptually important."],
+      load: ["1. Load meshes", "Reference + distorted meshes via Open3D / Trimesh; optional unit-sphere normalization."],
+      sphere: ["2. Bounding sphere", "Both models share an enclosing sphere; radius makes the metric scale-invariant."],
+      sample: ["3. Fibonacci sample", "PLER 2.0 places ray origins with a golden spiral for uniform surface coverage."],
+      cast: ["4. Ray casting", "Rays travel toward the center; first-hit distances are recorded on each mesh."],
+      mse: ["5. Error stats", "Per-ray length differences form MSE (and optional skew/kurtosis features)."],
+      topo: ["6. Topology", "Optional genus / Euler / edge stats enrich the feature vector."],
+      score: ["7. PLER score", "Log mapping 10·log10(Lmin² / MSE); optional MOS regressor for perception studies."],
     },
     rag: {
-      docs: ["Documents", "PDF/MD packet-core docs are chunked with RecursiveCharacterTextSplitter."],
-      embed: ["Embeddings", "all-MiniLM-L6-v2 vectors land in a local Chroma store."],
-      chroma: ["Chroma", "Persistent local vector DB — no cloud round-trip after ingest."],
-      llm: ["Qwen2.5:7B", "Ollama serves answers on-device; typical latency often 5–40s on NVIDIA."],
+      ingest: ["1. Ingest", "Place PDF/MD packet-core docs into data/; synthetic samples ship publicly."],
+      split: ["2. Split", "RecursiveCharacterTextSplitter creates overlapping chunks."],
+      embed: ["3. Embed", "HuggingFace all-MiniLM-L6-v2 turns chunks into dense vectors."],
+      store: ["4. Chroma", "Persistent local vector store — no cloud round-trip after ingest."],
+      retrieve: ["5. Retrieve", "Top-k similarity search builds the grounded context window."],
+      llm: ["6. Generate", "Ollama Qwen2.5:7B answers in RU/EN; typical 5–40s on NVIDIA."],
+      ui: ["7. Console UI", "Menu: build KB, ask questions, inspect sources."],
     },
     agents: {
-      user: ["User task", "Kick off a multi-step research / coding request."],
-      researcher: ["Researcher", "Retrieves context from papers via RAG."],
-      engineer: ["Engineer", "Implements or drafts solutions with LLM + tools."],
-      verifier: ["Verifier", "Checks claims and consistency before handoff."],
-      writer: ["Methodology writer", "Produces the structured write-up."],
+      user: ["1. User task", "Kick off a multi-step research or coding request."],
+      researcher: ["2. Researcher", "Pulls abstracts/papers via Chroma RAG."],
+      engineer: ["3. Engineer", "Drafts implementation with LLM + tools."],
+      verifier: ["4. Verifier", "Checks consistency and flags unsupported claims."],
+      writer: ["5. Writer", "Methodology / report synthesis."],
+      llmroute: ["LLM routing", "OpenRouter/DeepSeek with local Ollama fallback (qwen2.5-coder)."],
+      ui: ["Interfaces", "FastAPI web UI and optional Telegram bot."],
     },
     anc: {
-      ref: ["Reference mic", "Captures primary noise for the adaptive filter."],
-      filter: ["FxLMS filter", "Filtered-x LMS adapts cancellation with secondary-path model."],
+      noise: ["Primary noise", "Disturbance field to be cancelled near the quiet zone."],
+      ref: ["Reference mic", "Feeds the adaptive filter with a correlated noise signal."],
+      sec: ["Secondary path", "Speaker→error acoustic plant; measured as an IR."],
+      ir: ["IR measure", "WASAPI capture; bench peak ≈ 43.7 ms @ 48 kHz."],
+      fxlms: ["FxLMS", "Filtered-x LMS adapts coefficients using the secondary-path model."],
       speaker: ["Anti-noise", "Loudspeaker emits the cancelling waveform."],
-      error: ["Error mic", "Residual noise drives adaptation; latency dominates feasibility."],
-      delay: ["Secondary path", "Bench IR peak ≈ 43.7 ms @ 48 kHz — physics, not marketing."],
+      error: ["Error mic", "Residual drives adaptation; latency bounds feasibility."],
+      sim: ["Offline sim", "python_proto FxLMS simulation before realtime claims."],
     },
     bench: {
-      degrade: ["Degradations", "Noise, smooth, decimate, hybrid — controllable mesh corruption."],
-      metrics: ["20+ metrics", "PLER family + classic geometric distances in one UI."],
-      mos: ["MOS correl.", "PLCC / SROCC / Kendall vs subjective scores."],
+      import: ["1. Import", "Load OBJ fixtures or local meshes into Streamlit."],
+      degrade: ["2. Degrade", "Noise, smooth, decimate, hybrid generators."],
+      pler: ["3. PLER family", "Core metric plus classic Chamfer/Hausdorff/F-score wrappers."],
+      batch: ["4. Batch", "Run 20+ metrics across degradations."],
+      norm: ["5. Normalize", "Score scaling for fair comparison."],
+      mos: ["6. vs MOS", "PLCC / SROCC / Kendall correlations."],
+      ui: ["7. Streamlit UI", "Interactive research console for XR QA studies."],
     },
     acoustic: {
-      gen: ["Stimulus gen", "MLS, pink, narrowband, WAV at 48 kHz stereo."],
-      ild: ["ILD / ITD", "Level and time cues for seven preset positions."],
-      session: ["Session", "Build listening protocols, export WAV, view spectrograms."],
+      pos: ["Positions", "Seven presets with L/R levels and delays."],
+      pan: ["Panning laws", "Linear, sin/cos, constant-power; intensity/time/mixed modes."],
+      gen: ["Generator", "MLS, pink 200–5000 Hz, narrowband, or WAV @ 48 kHz."],
+      adsr: ["Envelope", "ADSR shaping before playback/export."],
+      play: ["Playback", "Headphones recommended for ILD/ITD listening."],
+      viz: ["Visualization", "Oscillogram + spectrogram panels."],
+      session: ["Session", "Build protocols and export WAV stems."],
     },
   };
 
@@ -228,13 +247,16 @@
     if (!tip) return;
     root.querySelectorAll(".node").forEach((n) => {
       const key = n.dataset.node;
-      const info = tips[kind]?.[key];
+      const info = tips[kind] && tips[kind][key];
       if (!info) return;
       const show = () => {
         root.querySelectorAll(".node").forEach((x) => x.classList.remove("active"));
         n.classList.add("active");
-        tip.innerHTML = `<strong>${info[0]}</strong>${info[1]}`;
+        tip.innerHTML = "<strong>" + info[0] + "</strong>" + info[1];
         tip.classList.add("show");
+        root.querySelectorAll(".logic-legend span").forEach((s) => s.classList.remove("on"));
+        const legend = root.querySelector('[data-leg="' + key + '"]');
+        if (legend) legend.classList.add("on");
       };
       n.addEventListener("mouseenter", show);
       n.addEventListener("focus", show);
@@ -245,128 +267,240 @@
     });
   }
 
-  function svgShell(inner, caption) {
-    return `<div class="diagram-shell reveal">
-      <div class="diagram-tip" aria-live="polite">Hover or tap a node</div>
-      ${inner}
-      <div class="diagram-caption"><span>${caption}</span><span>Interactive · SVG</span></div>
-    </div>`;
+  function box(id, x, y, w, h, label, sub) {
+    sub = sub || "";
+    const subText = sub
+      ? '<text x="' + (x + w / 2) + '" y="' + (y + h / 2 + 12) + '" text-anchor="middle" fill="#8b97a8" font-size="10" font-family="JetBrains Mono, monospace">' + sub + "</text>"
+      : "";
+    const labelY = y + h / 2 - (sub ? 6 : 0);
+    return (
+      '<g class="node" data-node="' + id + '">' +
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="12" fill="#121925" stroke="#2dd4bf" stroke-width="1.5"/>' +
+      '<text x="' + (x + w / 2) + '" y="' + labelY + '" text-anchor="middle" fill="#eef3f8" font-size="13" font-family="Syne,sans-serif" font-weight="700">' + label + "</text>" +
+      subText +
+      "</g>"
+    );
+  }
+
+  function arrow(x1, y1, x2, y2, color) {
+    color = color || "#2dd4bf";
+    return '<line class="flow-edge" x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + color + '" stroke-width="1.7"/>';
+  }
+
+  function svgShell(inner, caption, legendKeys, kind) {
+    const legend = (legendKeys || [])
+      .map(function (k) {
+        const title = (tips[kind] && tips[kind][k] && tips[kind][k][0]) || k;
+        return '<span data-leg="' + k + '">' + title + "</span>";
+      })
+      .join("");
+    return (
+      '<div class="diagram-shell detailed reveal">' +
+      '<div class="diagram-tip" aria-live="polite">Hover or tap a stage</div>' +
+      inner +
+      '<div class="logic-legend">' + legend + "</div>" +
+      '<div class="diagram-caption"><span>' + caption + '</span><span>Interactive · SVG logic</span></div>' +
+      "</div>"
+    );
+  }
+
+  function rayPreview() {
+    var lines = "";
+    for (var i = 0; i < 10; i++) {
+      var a = (i / 10) * Math.PI * 2;
+      lines +=
+        '<line class="flow-edge" x1="' +
+        (200 + Math.cos(a) * 70) +
+        '" y1="' +
+        (310 + Math.sin(a) * 70) +
+        '" x2="200" y2="310"/>';
+    }
+    return lines;
   }
 
   const builders = {
-    pler() {
-      return svgShell(`<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PLER interactive diagram">
-        <defs>
-          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-            <stop stop-color="#2dd4bf"/><stop offset="1" stop-color="#38bdf8"/>
-          </linearGradient>
-        </defs>
-        <rect width="640" height="360" fill="#0c1118" rx="12"/>
-        <circle class="node" data-node="sphere" cx="260" cy="180" r="110" fill="none" stroke="url(#g1)" stroke-width="2" opacity=".9"/>
-        <g stroke="#2dd4bf" stroke-opacity=".55">
-          ${Array.from({length:12},(_,i)=>{const a=i/12*Math.PI*2;const x=260+Math.cos(a)*110;const y=180+Math.sin(a)*110;return `<line class="flow-edge" x1="${x}" y1="${y}" x2="260" y2="180"/>`;}).join("")}
-        </g>
-        <circle class="node" data-node="rays" cx="370" cy="90" r="8" fill="#38bdf8"/>
-        <text x="386" y="94" fill="#8b97a8" font-size="12" font-family="JetBrains Mono, monospace">Fibonacci samples</text>
-        <polygon class="node" data-node="mesh" points="230,150 290,140 310,200 250,220" fill="#2dd4bf33" stroke="#2dd4bf" stroke-width="1.5"/>
-        <rect class="node" data-node="score" x="430" y="145" width="150" height="70" rx="12" fill="#121925" stroke="#2dd4bf"/>
-        <text x="450" y="175" fill="#eef3f8" font-size="14" font-family="Syne,sans-serif" font-weight="700">PLER score</text>
-        <text x="450" y="196" fill="#8b97a8" font-size="11" font-family="JetBrains Mono, monospace">10 log (Lmin² / MSE)</text>
-        <circle cx="260" cy="180" r="4" fill="#fff"/>
-      </svg>`, "PLER 2.0 — sphere rays → MSE → log fidelity");
+    pler: function () {
+      var svg =
+        '<svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PLER detailed logic">' +
+        '<rect width="720" height="420" fill="#0c1118" rx="14"/>' +
+        box("load", 30, 30, 120, 56, "Load", "OBJ/mesh") +
+        box("sphere", 180, 30, 120, 56, "Sphere", "normalize") +
+        box("sample", 330, 30, 130, 56, "Fibonacci", "ray origins") +
+        box("cast", 490, 30, 120, 56, "Cast rays", "to center") +
+        arrow(150, 58, 180, 58) +
+        arrow(300, 58, 330, 58) +
+        arrow(460, 58, 490, 58) +
+        box("mse", 180, 150, 140, 64, "MSE stats", "len diffs") +
+        box("topo", 360, 150, 140, 64, "Topology", "optional") +
+        box("score", 540, 150, 150, 64, "PLER score", "10log L2/MSE") +
+        arrow(550, 86, 250, 150, "#38bdf8") +
+        arrow(320, 182, 360, 182) +
+        arrow(500, 182, 540, 182) +
+        '<circle class="node" data-node="cast" cx="200" cy="310" r="70" fill="none" stroke="#38bdf8" stroke-width="2"/>' +
+        '<g stroke="#2dd4bf" stroke-opacity=".5">' +
+        rayPreview() +
+        "</g>" +
+        '<text x="200" y="400" text-anchor="middle" fill="#8b97a8" font-size="11" font-family="JetBrains Mono, monospace">ray geometry preview</text>' +
+        '<text x="320" y="300" fill="#8b97a8" font-size="12" font-family="JetBrains Mono, monospace">Open3D / Trimesh · optional MOS regressor</text>' +
+        "</svg>";
+      return svgShell(svg, "PLER 2.0 end-to-end logic", ["load", "sphere", "sample", "cast", "mse", "topo", "score"], "pler");
     },
-    rag() {
-      const boxes = [
-        ["docs",40,"Docs"],["embed",180,"Embed"],["chroma",320,"Chroma"],["llm",460,"Qwen 7B"]
-      ];
-      return svgShell(`<svg viewBox="0 0 640 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RAG pipeline">
-        <rect width="640" height="240" fill="#0c1118" rx="12"/>
-        ${boxes.map(([id,x,label],i)=>`
-          <rect class="node" data-node="${id}" x="${x}" y="80" width="110" height="64" rx="14" fill="#121925" stroke="${i===3?"#38bdf8":"#2dd4bf"}" stroke-width="1.6"/>
-          <text x="${x+55}" y="118" text-anchor="middle" fill="#eef3f8" font-size="14" font-family="Syne,sans-serif" font-weight="700">${label}</text>
-          ${i<3?`<line class="flow-edge" x1="${x+110}" y1="112" x2="${boxes[i+1][1]}" y2="112" stroke="#2dd4bf" stroke-width="2"/>`:""}
-        `).join("")}
-        <text x="40" y="40" fill="#8b97a8" font-size="12" font-family="JetBrains Mono, monospace">Local RAG · no cloud after model pull</text>
-      </svg>`, "Hover stages — LangChain + Chroma + Ollama");
+    rag: function () {
+      var svg =
+        '<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RAG detailed logic">' +
+        '<rect width="720" height="360" fill="#0c1118" rx="14"/>' +
+        box("ingest", 24, 40, 110, 58, "Ingest", "PDF/MD") +
+        box("split", 160, 40, 110, 58, "Split", "chunks") +
+        box("embed", 296, 40, 110, 58, "Embed", "MiniLM") +
+        box("store", 432, 40, 110, 58, "Chroma", "persist") +
+        box("retrieve", 568, 40, 120, 58, "Retrieve", "top-k") +
+        arrow(134, 69, 160, 69) +
+        arrow(270, 69, 296, 69) +
+        arrow(406, 69, 432, 69) +
+        arrow(542, 69, 568, 69) +
+        box("llm", 296, 170, 160, 70, "Qwen2.5:7B", "Ollama local") +
+        box("ui", 496, 170, 160, 70, "Console UI", "ask / build KB") +
+        arrow(628, 98, 376, 170, "#38bdf8") +
+        arrow(456, 205, 496, 205) +
+        '<text x="24" y="280" fill="#8b97a8" font-size="12" font-family="JetBrains Mono, monospace">Local-only after model pull · RU/EN · synthetic docs in public repo</text>' +
+        "</svg>";
+      return svgShell(svg, "PS Core RAG control flow", ["ingest", "split", "embed", "store", "retrieve", "llm", "ui"], "rag");
     },
-    agents() {
-      const nodes = [
-        ["user",80,120],["researcher",220,60],["engineer",220,180],["verifier",380,120],["writer",520,120]
-      ];
-      return svgShell(`<svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI Team graph">
-        <rect width="640" height="260" fill="#0c1118" rx="12"/>
-        <line class="flow-edge" x1="120" y1="120" x2="180" y2="70" stroke="#38bdf8" stroke-width="1.5"/>
-        <line class="flow-edge" x1="120" y1="120" x2="180" y2="170" stroke="#38bdf8" stroke-width="1.5"/>
-        <line class="flow-edge" x1="260" y1="70" x2="340" y2="110" stroke="#2dd4bf" stroke-width="1.5"/>
-        <line class="flow-edge" x1="260" y1="190" x2="340" y2="130" stroke="#2dd4bf" stroke-width="1.5"/>
-        <line class="flow-edge" x1="420" y1="120" x2="480" y2="120" stroke="#2dd4bf" stroke-width="1.5"/>
-        ${nodes.map(([id,x,y])=>`
-          <circle class="node" data-node="${id}" cx="${x}" cy="${y}" r="28" fill="#121925" stroke="#2dd4bf" stroke-width="1.8"/>
-          <text x="${x}" y="${y+4}" text-anchor="middle" fill="#eef3f8" font-size="10" font-family="JetBrains Mono, monospace">${id.slice(0,3)}</text>
-        `).join("")}
-      </svg>`, "LangGraph roles — click a node");
+    agents: function () {
+      var svg =
+        '<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI Team detailed logic">' +
+        '<rect width="720" height="380" fill="#0c1118" rx="14"/>' +
+        box("user", 40, 40, 120, 56, "User", "task") +
+        box("researcher", 220, 40, 140, 56, "Researcher", "RAG") +
+        box("engineer", 420, 40, 140, 56, "Engineer", "code/draft") +
+        box("verifier", 220, 160, 140, 56, "Verifier", "checks") +
+        box("writer", 420, 160, 140, 56, "Writer", "method") +
+        box("llmroute", 40, 160, 140, 56, "LLM route", "cloud/local") +
+        box("ui", 300, 280, 180, 56, "FastAPI / TG", "interfaces") +
+        arrow(160, 68, 220, 68) +
+        arrow(360, 68, 420, 68) +
+        arrow(490, 96, 490, 160) +
+        arrow(290, 96, 290, 160) +
+        arrow(160, 188, 220, 188, "#38bdf8") +
+        arrow(360, 188, 420, 188) +
+        arrow(490, 216, 390, 280, "#38bdf8") +
+        "</svg>";
+      return svgShell(svg, "LangGraph multi-agent logic", ["user", "researcher", "engineer", "verifier", "writer", "llmroute", "ui"], "agents");
     },
-    anc() {
-      return svgShell(`<svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FxLMS ANC">
-        <rect width="640" height="260" fill="#0c1118" rx="12"/>
-        <rect class="node" data-node="ref" x="40" y="40" width="100" height="48" rx="12" fill="#121925" stroke="#38bdf8"/>
-        <text x="90" y="70" text-anchor="middle" fill="#eef3f8" font-size="12" font-family="Syne,sans-serif">Ref mic</text>
-        <rect class="node" data-node="filter" x="200" y="100" width="120" height="56" rx="12" fill="#121925" stroke="#2dd4bf"/>
-        <text x="260" y="134" text-anchor="middle" fill="#eef3f8" font-size="13" font-family="Syne,sans-serif">FxLMS</text>
-        <rect class="node" data-node="speaker" x="380" y="40" width="110" height="48" rx="12" fill="#121925" stroke="#2dd4bf"/>
-        <text x="435" y="70" text-anchor="middle" fill="#eef3f8" font-size="12" font-family="Syne,sans-serif">Speaker</text>
-        <rect class="node" data-node="error" x="380" y="170" width="110" height="48" rx="12" fill="#121925" stroke="#fb923c"/>
-        <text x="435" y="200" text-anchor="middle" fill="#eef3f8" font-size="12" font-family="Syne,sans-serif">Error mic</text>
-        <rect class="node" data-node="delay" x="520" y="100" width="90" height="56" rx="12" fill="#121925" stroke="#38bdf8"/>
-        <text x="565" y="125" text-anchor="middle" fill="#eef3f8" font-size="11" font-family="JetBrains Mono, monospace">43.7ms</text>
-        <text x="565" y="142" text-anchor="middle" fill="#8b97a8" font-size="10" font-family="JetBrains Mono, monospace">@48kHz</text>
-        <line class="flow-edge" x1="140" y1="64" x2="200" y2="120" stroke="#38bdf8" stroke-width="1.5"/>
-        <line class="flow-edge" x1="320" y1="120" x2="380" y2="64" stroke="#2dd4bf" stroke-width="1.5"/>
-        <line class="flow-edge" x1="435" y1="88" x2="435" y2="170" stroke="#fb923c" stroke-width="1.5"/>
-        <line class="flow-edge" x1="490" y1="194" x2="320" y2="145" stroke="#fb923c" stroke-width="1.5"/>
-        <line class="flow-edge" x1="320" y1="128" x2="520" y2="128" stroke="#38bdf8" stroke-width="1.5"/>
-      </svg>`, "FxLMS loop with measured secondary-path delay");
+    anc: function () {
+      var svg =
+        '<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ANC detailed logic">' +
+        '<rect width="720" height="400" fill="#0c1118" rx="14"/>' +
+        box("noise", 30, 40, 120, 56, "Noise", "primary") +
+        box("ref", 180, 40, 120, 56, "Ref mic", "x(n)") +
+        box("fxlms", 340, 40, 140, 64, "FxLMS", "adaptive W") +
+        box("speaker", 520, 40, 130, 56, "Speaker", "anti-noise") +
+        arrow(150, 68, 180, 68) +
+        arrow(300, 68, 340, 68) +
+        arrow(480, 68, 520, 68) +
+        box("sec", 340, 150, 140, 56, "Sec. path", "S(z)") +
+        box("ir", 520, 150, 130, 64, "IR measure", "43.7ms") +
+        box("error", 520, 260, 130, 56, "Error mic", "e(n)") +
+        box("sim", 30, 150, 120, 56, "Sim", "offline") +
+        arrow(410, 104, 410, 150, "#38bdf8") +
+        arrow(480, 178, 520, 178) +
+        arrow(585, 216, 585, 260, "#fb923c") +
+        arrow(520, 288, 410, 104, "#fb923c") +
+        '<text x="30" y="360" fill="#8b97a8" font-size="12" font-family="JetBrains Mono, monospace">WASAPI IR → plant model → FxLMS → residual</text>' +
+        "</svg>";
+      return svgShell(svg, "FxLMS ANC detailed loop", ["noise", "ref", "fxlms", "speaker", "sec", "ir", "error", "sim"], "anc");
     },
-    bench() {
-      return svgShell(`<svg viewBox="0 0 640 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3D Quality Bench">
-        <rect width="640" height="240" fill="#0c1118" rx="12"/>
-        <rect class="node" data-node="degrade" x="50" y="70" width="140" height="100" rx="16" fill="#121925" stroke="#2dd4bf"/>
-        <text x="120" y="120" text-anchor="middle" fill="#eef3f8" font-size="14" font-family="Syne,sans-serif" font-weight="700">Degrade</text>
-        <text x="120" y="142" text-anchor="middle" fill="#8b97a8" font-size="11" font-family="JetBrains Mono, monospace">noise·LOD</text>
-        <rect class="node" data-node="metrics" x="250" y="70" width="140" height="100" rx="16" fill="#121925" stroke="#38bdf8"/>
-        <text x="320" y="120" text-anchor="middle" fill="#eef3f8" font-size="14" font-family="Syne,sans-serif" font-weight="700">Metrics</text>
-        <text x="320" y="142" text-anchor="middle" fill="#8b97a8" font-size="11" font-family="JetBrains Mono, monospace">20+</text>
-        <rect class="node" data-node="mos" x="450" y="70" width="140" height="100" rx="16" fill="#121925" stroke="#2dd4bf"/>
-        <text x="520" y="120" text-anchor="middle" fill="#eef3f8" font-size="14" font-family="Syne,sans-serif" font-weight="700">vs MOS</text>
-        <text x="520" y="142" text-anchor="middle" fill="#8b97a8" font-size="11" font-family="JetBrains Mono, monospace">PLCC</text>
-        <line class="flow-edge" x1="190" y1="120" x2="250" y2="120" stroke="#2dd4bf" stroke-width="2"/>
-        <line class="flow-edge" x1="390" y1="120" x2="450" y2="120" stroke="#38bdf8" stroke-width="2"/>
-      </svg>`, "Streamlit research loop");
+    bench: function () {
+      var svg =
+        '<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bench detailed logic">' +
+        '<rect width="720" height="360" fill="#0c1118" rx="14"/>' +
+        box("import", 30, 40, 120, 56, "Import", "OBJ") +
+        box("degrade", 180, 40, 130, 56, "Degrade", "4 modes") +
+        box("pler", 340, 40, 130, 56, "PLER+", "family") +
+        box("batch", 500, 40, 150, 56, "20+ metrics", "batch") +
+        arrow(150, 68, 180, 68) +
+        arrow(310, 68, 340, 68) +
+        arrow(470, 68, 500, 68) +
+        box("norm", 180, 160, 140, 56, "Normalize", "scores") +
+        box("mos", 360, 160, 150, 64, "vs MOS", "PLCC/SROCC") +
+        box("ui", 540, 160, 140, 56, "Streamlit", "UI") +
+        arrow(575, 96, 250, 160, "#38bdf8") +
+        arrow(320, 188, 360, 188) +
+        arrow(510, 188, 540, 188) +
+        "</svg>";
+      return svgShell(svg, "3D Quality Bench logic", ["import", "degrade", "pler", "batch", "norm", "mos", "ui"], "bench");
     },
-    acoustic() {
-      return svgShell(`<svg viewBox="0 0 640 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Acoustic localization">
-        <rect width="640" height="240" fill="#0c1118" rx="12"/>
-        <rect class="node" data-node="gen" x="40" y="80" width="130" height="70" rx="14" fill="#121925" stroke="#2dd4bf"/>
-        <text x="105" y="122" text-anchor="middle" fill="#eef3f8" font-size="13" font-family="Syne,sans-serif">Generator</text>
-        <rect class="node" data-node="ild" x="230" y="50" width="180" height="130" rx="16" fill="#121925" stroke="#38bdf8"/>
-        <text x="320" y="100" text-anchor="middle" fill="#eef3f8" font-size="14" font-family="Syne,sans-serif" font-weight="700">ILD / ITD</text>
-        <text x="320" y="124" text-anchor="middle" fill="#8b97a8" font-size="11" font-family="JetBrains Mono, monospace">7 positions · 48 kHz</text>
-        <path d="M250 150 Q320 170 390 150" fill="none" stroke="#2dd4bf" stroke-width="2"/>
-        <rect class="node" data-node="session" x="460" y="80" width="140" height="70" rx="14" fill="#121925" stroke="#2dd4bf"/>
-        <text x="530" y="122" text-anchor="middle" fill="#eef3f8" font-size="13" font-family="Syne,sans-serif">Session</text>
-        <line class="flow-edge" x1="170" y1="115" x2="230" y2="115" stroke="#2dd4bf" stroke-width="2"/>
-        <line class="flow-edge" x1="410" y1="115" x2="460" y2="115" stroke="#38bdf8" stroke-width="2"/>
-      </svg>`, "PyQt6 localization tester");
+    acoustic: function () {
+      var svg =
+        '<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Acoustic detailed logic">' +
+        '<rect width="720" height="360" fill="#0c1118" rx="14"/>' +
+        box("pos", 30, 40, 130, 56, "Positions", "7 presets") +
+        box("pan", 190, 40, 130, 56, "Panning", "laws") +
+        box("gen", 350, 40, 140, 56, "Generator", "48 kHz") +
+        box("adsr", 520, 40, 140, 56, "ADSR", "envelope") +
+        arrow(160, 68, 190, 68) +
+        arrow(320, 68, 350, 68) +
+        arrow(490, 68, 520, 68) +
+        box("play", 190, 160, 140, 56, "Playback", "headphones") +
+        box("viz", 360, 160, 140, 64, "Viz", "scope/spec") +
+        box("session", 530, 160, 140, 56, "Session", "WAV out") +
+        arrow(590, 96, 260, 160, "#38bdf8") +
+        arrow(330, 188, 360, 188) +
+        arrow(500, 188, 530, 188) +
+        "</svg>";
+      return svgShell(svg, "Localization tester logic", ["pos", "pan", "gen", "adsr", "play", "viz", "session"], "acoustic");
     },
   };
 
-  document.querySelectorAll("[data-diagram]").forEach((el) => {
-    const kind = el.dataset.diagram;
-    const build = builders[kind];
+  document.querySelectorAll("[data-diagram]").forEach(function (el) {
+    var kind = el.dataset.diagram;
+    var build = builders[kind];
     if (!build) return;
     el.innerHTML = build();
-    const shell = el.querySelector(".diagram-shell");
+    var shell = el.querySelector(".diagram-shell");
     wireTips(shell, kind);
-    io.observe(shell);
+    if (typeof io !== "undefined") io.observe(shell);
   });
+
+  document.querySelectorAll("[data-carousel]").forEach(function (root) {
+    var track = root.querySelector(".carousel-track");
+    var slides = root.querySelectorAll(".carousel-slide");
+    var cap = root.querySelector("[data-cap]");
+    var dots = Array.prototype.slice.call(root.querySelectorAll("[data-dot]"));
+    var captions = [];
+    try {
+      captions = JSON.parse(root.getAttribute("data-captions") || "[]");
+    } catch (e) {}
+    var i = 0;
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = "translateX(" + -i * 100 + "%)";
+      if (cap) {
+        var img = slides[i].querySelector("img");
+        cap.textContent = captions[i] || (img && img.alt) || "";
+      }
+      dots.forEach(function (d, di) {
+        d.classList.toggle("active", di === i);
+      });
+    }
+    var prev = root.querySelector("[data-prev]");
+    var next = root.querySelector("[data-next]");
+    if (prev) prev.addEventListener("click", function () { go(i - 1); });
+    if (next) next.addEventListener("click", function () { go(i + 1); });
+    dots.forEach(function (d) {
+      d.addEventListener("click", function () { go(+d.dataset.dot); });
+    });
+    var timer = setInterval(function () { go(i + 1); }, 5000);
+    root.addEventListener("pointerenter", function () { clearInterval(timer); });
+    root.addEventListener("pointerleave", function () {
+      timer = setInterval(function () { go(i + 1); }, 5000);
+    });
+  });
+
+  if (!touch && cursor) {
+    document.querySelectorAll(".node, .carousel-btn, [data-dot]").forEach(function (el) {
+      el.addEventListener("mouseenter", function () { cursor.classList.add("big"); });
+      el.addEventListener("mouseleave", function () { cursor.classList.remove("big"); });
+    });
+  }
 })();
