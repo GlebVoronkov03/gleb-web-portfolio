@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLER — Peak Length Error Ratio — Gleb Voronkov</title>
+  <meta name="description" content="Gleb Voronkov — ML Engineer. LLM/RAG, 3D computer vision, acoustic DSP." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-brand" href="../index.html">Gleb Voronkov</a>
+    <div class="nav-links">
+      <a href="../index.html" data-nav="home">Home</a>
+      <a href="../projects/index.html" data-nav="work">Work</a>
+      <a href="../publications.html" data-nav="pubs">Publications</a>
+      <a href="../about.html" data-nav="about">About</a>
+      <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero"><div class="wrap">
+  <h1>PLER — Peak Length Error Ratio</h1>
+  <p class="tagline">Original full-reference metric for geometric quality of 3D meshes.</p>
+  <div class="link-row">
+      <a class="chip-link" href="https://github.com/GlebVoronkov03/pler-3d-quality" target="_blank" rel="noopener">GitHub</a>
+      <a class="chip-link secondary" href="https://github.com/GlebVoronkov03/3d-quality-bench" target="_blank" rel="noopener">3D Quality Bench</a>
+  </div>
+</div></section>
+<main class="wrap">
+  <div class="gallery">
+    <img src="../assets/screenshots/pler-comparison.png" alt="PLER — Peak Length Error Ratio" />
+    <img src="../assets/diagrams/pler-architecture.png" alt="PLER — Peak Length Error Ratio" />
+    <img src="../assets/screenshots/pler-convergence.png" alt="PLER — Peak Length Error Ratio" />
+  </div>
+  <div class="prose">
+<h2>Problem</h2><p>Chamfer and Hausdorff distances often diverge from how humans perceive mesh distortion.</p><h2>Approach</h2><p>Ray-casting, error statistics, topology, optional ML perception regressor.</p><h2>Results</h2><ul><li>Cache acceleration up to ~1.8–3.7× on repeat runs</li><li>Open3D / Trimesh pipeline with research batch modes</li></ul>
+  <p class="note">Non-commercial research license. Commercial use requires written permission.</p>
+  </div>
+</main>
+<footer class="site-footer"><div class="wrap">
+  <div>© 2026 Gleb Voronkov · Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
+</div></footer>
+<script src="../nav.js"></script>
+</body></html>
