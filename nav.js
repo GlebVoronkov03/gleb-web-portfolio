@@ -9,4 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!path.includes('/projects') && !path.includes('about') && !path.includes('publications')) a.classList.add('active');
     }
   });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('reveal'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.case, .pub, .proof').forEach(el => io.observe(el));
 });

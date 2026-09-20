@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Team Orchestrator — Gleb Voronkov</title>
-  <meta name="description" content="Gleb Voronkov — ML Engineer. LLM/RAG, 3D computer vision, acoustic DSP." />
+  <meta name="description" content="LangGraph multi-agent workflow with RAG and Ollama fallback." />
+  <meta property="og:title" content="AI Team Orchestrator — Gleb Voronkov" />
+  <meta property="og:description" content="LangGraph multi-agent workflow with RAG and Ollama fallback." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -33,18 +36,28 @@
   </div>
 </div></section>
 <main class="wrap">
-  <div class="gallery">
+  <div class="gallery two">
     <img src="../assets/screenshots/ai-team-hero.png" alt="AI Team Orchestrator" />
     <img src="../assets/diagrams/ai-team-architecture.png" alt="AI Team Orchestrator" />
   </div>
   <div class="prose">
-<h2>Problem</h2><p>Multi-step research/coding needs roles and verification.</p><h2>Approach</h2><p>Researcher → engineer → verifier → methodology writer.</p><h2>Results</h2><ul><li>FastAPI UI, optional Telegram bot</li><li>Prompt IP anonymization helper</li></ul>
+
+<h2>Problem</h2>
+<p>Multi-step research and coding need roles, retrieval, and verification — not a single unbounded chat turn.</p>
+<h2>Approach</h2>
+<p>Researcher → engineer → verifier → methodology writer, with Chroma retrieval and DeepSeek/OpenRouter plus local Ollama fallback (<code>qwen2.5-coder</code>).</p>
+<h2>Results</h2>
+<ul>
+  <li>FastAPI UI and optional Telegram bot</li>
+  <li>Prompt IP anonymization helper for safer external LLM calls</li>
+</ul>
+
   
   </div>
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov · Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
+  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
 <script src="../nav.js"></script>
 </body></html>

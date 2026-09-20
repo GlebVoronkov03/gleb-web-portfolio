@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>3D Quality Bench — Gleb Voronkov</title>
-  <meta name="description" content="Gleb Voronkov — ML Engineer. LLM/RAG, 3D computer vision, acoustic DSP." />
+  <meta name="description" content="Streamlit multi-metric 3D QA with degradations and MOS correlations." />
+  <meta property="og:title" content="3D Quality Bench — Gleb Voronkov" />
+  <meta property="og:description" content="Streamlit multi-metric 3D QA with degradations and MOS correlations." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -29,22 +32,35 @@
   <p class="tagline">Streamlit multi-metric 3D QA with degradations and MOS correlations.</p>
   <div class="link-row">
       <a class="chip-link" href="https://github.com/GlebVoronkov03/3d-quality-bench" target="_blank" rel="noopener">GitHub</a>
+      <a class="chip-link" href="../assets/papers/user-assessments-3d-xr.pdf" target="_blank" rel="noopener">XR assessments PDF</a>
       <a class="chip-link secondary" href="https://github.com/GlebVoronkov03/pler-3d-quality" target="_blank" rel="noopener">PLER</a>
   </div>
 </div></section>
 <main class="wrap">
-  <div class="gallery">
+  <div class="gallery two">
     <img src="../assets/screenshots/bench-hero.png" alt="3D Quality Bench" />
+    <img src="../assets/screenshots/xr-method.png" alt="3D Quality Bench" />
     <img src="../assets/diagrams/bench-architecture.png" alt="3D Quality Bench" />
   </div>
   <div class="prose">
-<h2>Problem</h2><p>Need a reproducible degrade → measure → correlate loop.</p><h2>Approach</h2><p>20+ metrics, degradation generators, PLCC/SROCC/Kendall vs MOS.</p><h2>Results</h2><ul><li>Tiny fixtures shipped</li><li>Cross-linked with PLER</li></ul>
+
+<h2>Problem</h2>
+<p>Research on 3D user assessment for XR needs a reproducible degrade → measure → correlate loop. Classical video metrics were largely built for 2D sequences.</p>
+<blockquote>From the XR assessments paper: most existing metrics “were created to meet the needs of two-dimensional systems,” motivating 3D-aware methods tied to user preference.</blockquote>
+<h2>Approach</h2>
+<p>20+ metric wrappers (including the PLER family), controllable degradations, and PLCC / SROCC / Kendall helpers versus MOS.</p>
+<h2>Results</h2>
+<ul>
+  <li>Tiny fixtures shipped; large meshes stay local</li>
+  <li>Cross-linked with <a href="pler.html">PLER</a> and related Scopus work on user assessments</li>
+</ul>
+
   <p class="note">Non-commercial research license.</p>
   </div>
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov · Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
+  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
 <script src="../nav.js"></script>
 </body></html>

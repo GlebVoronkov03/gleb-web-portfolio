@@ -1,7 +1,7 @@
 # gleb-web-portfolio
 
-Personal portfolio for **Gleb Voronkov** (ML Engineer).
+Personal site for **Gleb Voronkov** — ML Engineer / R&D.
 
 **Live:** https://glebvoronkov03.github.io/gleb-web-portfolio/
 
-Static multipage HTML on GitHub Pages.
+Static multipage HTML (Instrument Serif + IBM Plex). Papers under `assets/papers/`.

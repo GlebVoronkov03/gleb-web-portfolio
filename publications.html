@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Publications — Gleb Voronkov</title>
-  <meta name="description" content="Gleb Voronkov — ML Engineer. LLM/RAG, 3D computer vision, acoustic DSP." />
+  <title>Publications & IP — Gleb Voronkov</title>
+  <meta name="description" content="Peer-reviewed papers, conference articles, and registered software." />
+  <meta property="og:title" content="Publications & IP — Gleb Voronkov" />
+  <meta property="og:description" content="Peer-reviewed papers, conference articles, and registered software." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -25,21 +28,107 @@
 </header>
 
 <section class="page-hero"><div class="wrap">
-  <h1>Publications &amp; IP</h1>
-  <p class="tagline">Peer-reviewed work and registered software.</p>
+  <p class="section-kicker">Publications &amp; IP</p>
+  <h1>Papers, certificates, PDFs</h1>
+  <p class="tagline">Abstracts adapted from the source manuscripts. Download the original PDFs below.</p>
 </div></section>
 <main class="wrap">
-  <ul class="pub-list">
-    <li><strong>Software registration № 2024682445</strong><br/>Video-to-anthropomorphic 3D motion capture in Unreal Engine (Rospatent).</li>
-    <li><a href="https://github.com/GlebVoronkov03/pler-3d-quality/blob/main/CITATION.cff">Voronkov G.A., Vinetsky V.Yu.</a> Character Motion Capture for Broadcast Content Production. Sync./Signal Processing Systems, 2025 (RSCI).</li>
-    <li>Voronkov G.A., Matskevich A.G., Orlov V.G. Virtual Video Content Studio Model Using AR. Telecom &amp; IT, 2023 (RSCI).</li>
-    <li>V. G. Voronkov. Research of methods for modeling user assessments of 3D content for XR systems. Scopus, 2024.</li>
-    <li>V. G. Voronkov. Error analysis of generating 3D models of objects using various hardware systems. Scopus, 2025.</li>
-  </ul>
+
+  <article class="pub">
+    <div class="pub-year">2025</div>
+    <div>
+      <h2 class="pub-title">PLER: A Novel Full-Reference Metric for Evaluating the Geometric Fidelity of 3D Assets</h2>
+      <p class="pub-meta">Voronkov G.A., Balobanov A.V. · MTUCI Research Department “Digital Television and Video-informatics”</p>
+      <p class="pub-abs">Enhancement of PLER (Peak Length to Error Ratio) for objective 3D quality assessment. The original sphere-ray design suffered from non-uniform ray distribution; Fibonacci (golden) spiral sampling yields PLER 2.0 with improved accuracy and stability on test meshes.</p>
+      
+      <div class="pub-actions">
+        <span class="venue">Paper</span>
+        <a class="text-link" href="assets/papers/pler-geometric-fidelity.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="pub">
+    <div class="pub-year">2025</div>
+    <div>
+      <h2 class="pub-title">Error analysis of generating 3D models of objects using various hardware systems</h2>
+      <p class="pub-meta">Voronkov G.A., Vinetsky V.Yu., Egorov D.A. · MTUCI</p>
+      <p class="pub-abs">Comparative analysis of software/hardware pipelines for small-sized 3D models — photogrammetry, TrueDepth (FaceID), and LiDAR — plus a size-based classification to guide method choice.</p>
+      
+      <div class="pub-actions">
+        <span class="venue">Scopus</span>
+        <a class="text-link" href="assets/papers/error-analysis-3d-hardware.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="pub">
+    <div class="pub-year">2025</div>
+    <div>
+      <h2 class="pub-title">Character motion capture for broadcast content production</h2>
+      <p class="pub-meta">Voronkov G.A., Vinetsky V.Yu. · Synchronization, Formation and Signal Processing Systems, №4-2025</p>
+      <p class="pub-abs">Software for motion capture and animation generation: approaches based on motion-capture technology, practical difficulties, and methods to overcome them for broadcast / media workflows.</p>
+      
+      <div class="pub-actions">
+        <span class="venue">RSCI</span>
+        <a class="text-link" href="assets/papers/motion-capture-broadcast.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="pub">
+    <div class="pub-year">2024</div>
+    <div>
+      <h2 class="pub-title">Research of methods for modeling user assessments of 3D content for extended reality systems</h2>
+      <p class="pub-meta">Voronkov G.A., Vlasyuk I.V. · MTUCI</p>
+      <p class="pub-abs">Analysis of user-rating models for video sequences and their transfer to XR. Most classical metrics were built for 2D systems; the work targets a 3D-aware quality method aligned with user preference.</p>
+      
+      <div class="pub-actions">
+        <span class="venue">Scopus</span>
+        <a class="text-link" href="assets/papers/user-assessments-3d-xr.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="pub">
+    <div class="pub-year">2024</div>
+    <div>
+      <h2 class="pub-title">CaT-3D — video-to-anthropomorphic 3D motion capture in Unreal Engine</h2>
+      <p class="pub-meta">Software registration № 2024682445 · Authors: Vinetsky V.Yu., Egorov D.A., Voronkov G.A. · Rightsholder: MTUCI · Registered 23 Sep 2024</p>
+      <p class="pub-abs">Program for capturing and transferring motion from video onto an anthropomorphic three-dimensional model in Unreal Engine.</p>
+      <div class="gallery" style="max-width:280px;margin:0.8rem 0"><img src="assets/screenshots/certificate-thumb.jpg" alt="Certificate" /></div>
+      <div class="pub-actions">
+        <span class="venue">Rospatent</span>
+        <a class="text-link" href="assets/papers/certificate-cat3d-2024682445.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="pub">
+    <div class="pub-year">2023</div>
+    <div>
+      <h2 class="pub-title">Virtual video content production studio model using augmented reality</h2>
+      <p class="pub-meta">Voronkov G.A., Matskevich A.G., Orlov V.G. · Telecommunications and Information Technologies, №2-2023</p>
+      <p class="pub-abs">ARTCam studio for recording and live broadcasting virtual video content in Unreal Engine with Virtual Production, 3D graphics, OBS, and AR — for education, streaming, and conferencing.</p>
+      
+      <div class="pub-actions">
+        <span class="venue">RSCI</span>
+        <a class="text-link" href="assets/papers/virtual-studio-ar-tit.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="pub">
+    <div class="pub-year">2023</div>
+    <div>
+      <h2 class="pub-title">Methodology for reducing detail by regions of interest</h2>
+      <p class="pub-meta">Voronkov G.A., Prokurat G.A., Vinetsky V.Yu., Batov V.I. · TiVS forum</p>
+      <p class="pub-abs">Polygon budgets keep growing for immersion, yet few pipelines optimize by human regions of interest. Proposes ROI-aware detail reduction aligned with visual attention and subjective quality.</p>
+      
+      <div class="pub-actions">
+        <span class="venue">Forum</span>
+        <a class="text-link" href="assets/papers/roi-detail-reduction.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+  </article>
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov · Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
+  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
 <script src="nav.js"></script>
 </body></html>
