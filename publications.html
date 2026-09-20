@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Publications — Gleb Voronkov</title>
-  <meta name="description" content="Papers and IP" />
+  <meta name="description" content="Papers, Scopus/RSCI, and software IP with hosted PDFs" />
   <meta property="og:title" content="Publications — Gleb Voronkov" />
-  <meta property="og:description" content="Papers and IP" />
+  <meta property="og:description" content="Papers, Scopus/RSCI, and software IP with hosted PDFs" />
   <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -23,17 +25,26 @@
       <a href="publications.html" data-nav="pubs">Publications</a>
       <a href="about.html" data-nav="about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
+      <a class="ext" href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="cv" href="assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>CV</a>
     </div>
   </nav>
 </header>
-
 <section class="page-hero"><div class="wrap">
   <p class="section-kicker">Publications &amp; IP</p>
   <h1>Papers &amp; certificates</h1>
-  <p class="tagline">Abstracts from the manuscripts — PDFs hosted on this site.</p>
+  <p class="tagline">Abstracts from the manuscripts — PDFs hosted on this site. Filter by venue.</p>
 </div></section>
 <main class="wrap">
-  <article class="pub reveal">
+  <div class="pub-filters" role="toolbar" aria-label="Venue filters">
+    <button type="button" class="active" data-pub-filter="all">All</button>
+    <button type="button" data-pub-filter="scopus">Scopus</button>
+    <button type="button" data-pub-filter="rsci">RSCI</button>
+    <button type="button" data-pub-filter="ip">IP</button>
+    <button type="button" data-pub-filter="paper">Paper</button>
+  </div>
+  <article class="pub reveal" data-venue="paper">
+    <div class="pdf-preview" aria-hidden="true"><iframe src="assets/papers/pler-geometric-fidelity.pdf#page=1" loading="lazy" title="PDF preview"></iframe></div>
     <div class="pub-year">2025</div>
     <div>
       <h2 class="pub-title">PLER: A Novel Full-Reference Metric for Evaluating the Geometric Fidelity of 3D Assets</h2>
@@ -42,7 +53,8 @@
       <div class="pub-actions"><span class="venue">Paper</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/pler-geometric-fidelity.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
   </article>
-  <article class="pub reveal">
+  <article class="pub reveal" data-venue="scopus">
+    <div class="pdf-preview" aria-hidden="true"><iframe src="assets/papers/error-analysis-3d-hardware.pdf#page=1" loading="lazy" title="PDF preview"></iframe></div>
     <div class="pub-year">2025</div>
     <div>
       <h2 class="pub-title">Error analysis of generating 3D models of objects using various hardware systems</h2>
@@ -51,16 +63,18 @@
       <div class="pub-actions"><span class="venue">Scopus</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/error-analysis-3d-hardware.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
   </article>
-  <article class="pub reveal">
+  <article class="pub reveal" data-venue="rsci">
+    <div class="pdf-preview" aria-hidden="true"><iframe src="assets/papers/motion-capture-broadcast.pdf#page=1" loading="lazy" title="PDF preview"></iframe></div>
     <div class="pub-year">2025</div>
     <div>
       <h2 class="pub-title">Character motion capture for broadcast content production</h2>
       <p class="pub-meta">Voronkov G.A., Vinetsky V.Yu. · Sync./Signal Processing Systems №4-2025</p>
       <p class="pub-abs">Motion-capture approaches for broadcast workflows, failure modes, and mitigation.</p>
-      <div class="pub-actions"><span class="venue">RSCI</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/motion-capture-broadcast.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div class="pub-actions"><span class="venue">RSCI</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/motion-capture-broadcast.pdf" target="_blank" rel="noopener">PDF</a><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="https://elibrary.ru/item.asp?id=81321441" target="_blank" rel="noopener">eLibrary</a></div>
     </div>
   </article>
-  <article class="pub reveal">
+  <article class="pub reveal" data-venue="scopus">
+    <div class="pdf-preview" aria-hidden="true"><iframe src="assets/papers/user-assessments-3d-xr.pdf#page=1" loading="lazy" title="PDF preview"></iframe></div>
     <div class="pub-year">2024</div>
     <div>
       <h2 class="pub-title">Research of methods for modeling user assessments of 3D content for XR systems</h2>
@@ -69,36 +83,40 @@
       <div class="pub-actions"><span class="venue">Scopus</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/user-assessments-3d-xr.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
   </article>
-  <article class="pub reveal">
+  <article class="pub reveal" data-venue="ip">
+    <div class="pdf-preview" aria-hidden="true"><iframe src="assets/papers/certificate-cat3d-2024682445.pdf#page=1" loading="lazy" title="PDF preview"></iframe></div>
     <div class="pub-year">2024</div>
     <div>
       <h2 class="pub-title">CaT-3D — video-to-anthropomorphic 3D motion capture in Unreal Engine</h2>
       <p class="pub-meta">№ 2024682445 · Vinetsky, Egorov, Voronkov · MTUCI · 23 Sep 2024</p>
       <p class="pub-abs">Registered software for transferring motion from video onto an anthropomorphic Unreal model.</p>
-      <div class="pub-actions"><span class="venue">Rospatent</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/certificate-cat3d-2024682445.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div class="pub-actions"><span class="venue">IP</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/certificate-cat3d-2024682445.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
   </article>
-  <article class="pub reveal">
+  <article class="pub reveal" data-venue="rsci">
+    <div class="pdf-preview" aria-hidden="true"><iframe src="assets/papers/virtual-studio-ar-tit.pdf#page=1" loading="lazy" title="PDF preview"></iframe></div>
     <div class="pub-year">2023</div>
     <div>
       <h2 class="pub-title">Virtual video content production studio model using augmented reality</h2>
       <p class="pub-meta">Voronkov G.A., Matskevich A.G., Orlov V.G. · Telecom & IT №2-2023</p>
       <p class="pub-abs">ARTCam studio: Unreal + Virtual Production + OBS + AR for live interactive video.</p>
-      <div class="pub-actions"><span class="venue">RSCI</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/virtual-studio-ar-tit.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div class="pub-actions"><span class="venue">RSCI</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/virtual-studio-ar-tit.pdf" target="_blank" rel="noopener">PDF</a><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="https://elibrary.ru/item.asp?id=59693847" target="_blank" rel="noopener">eLibrary</a></div>
     </div>
   </article>
-  <article class="pub reveal">
+  <article class="pub reveal" data-venue="paper">
+    <div class="pdf-preview" aria-hidden="true"><iframe src="assets/papers/roi-detail-reduction.pdf#page=1" loading="lazy" title="PDF preview"></iframe></div>
     <div class="pub-year">2023</div>
     <div>
       <h2 class="pub-title">Methodology for reducing detail by regions of interest</h2>
       <p class="pub-meta">Voronkov, Prokurat, Vinetsky, Batov · TiVS</p>
       <p class="pub-abs">ROI-aware LOD reduction aligned with visual attention and subjective quality.</p>
-      <div class="pub-actions"><span class="venue">Forum</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/roi-detail-reduction.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div class="pub-actions"><span class="venue">Paper</span><a class="text-link" style="border-bottom:1px solid currentColor;font-weight:600" href="assets/papers/roi-detail-reduction.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
-  </article></main>
+  </article>
+</main>
 <footer class="site-footer"><div class="wrap">
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
 <script src="app.js"></script>
 </body></html>

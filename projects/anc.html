@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FxLMS ANC Lab — Gleb Voronkov</title>
-  <meta name="description" content="ANC research: simulation, IR measurement, realtime experiments." />
+  <meta name="description" content="Secondary-path IR + adaptive cancellation loop." />
+  <meta property="og:title" content="FxLMS ANC Lab — Gleb Voronkov" />
+  <meta property="og:description" content="Secondary-path IR + adaptive cancellation loop." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/gallery/anc/01-ir.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -16,43 +21,42 @@
     <a class="nav-brand" href="../index.html">Gleb Voronkov</a>
     <div class="nav-links">
       <a href="../index.html" data-nav="home">Home</a>
-      <a href="index.html" data-nav="work">Work</a>
+      <a href="../projects/index.html" data-nav="work">Work</a>
       <a href="../publications.html" data-nav="pubs">Publications</a>
       <a href="../about.html" data-nav="about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
+      <a class="ext" href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="cv" href="../assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>CV</a>
     </div>
   </nav>
 </header>
-
 <section class="page-hero"><div class="wrap">
   <h1>FxLMS ANC Lab</h1>
-  <p class="tagline">ANC research: simulation, IR measurement, realtime experiments.</p>
-  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/fxlms-anc-lab" target="_blank" rel="noopener">GitHub</a><a class="chip-link secondary" href="acoustic.html">Acoustic</a></div>
+  <p class="tagline">Secondary-path IR + adaptive cancellation loop.</p>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/fxlms-anc-lab" target="_blank" rel="noopener">GitHub</a></div>
 </div></section>
 <main class="wrap">
   <div class="cover-band reveal"><img src="../assets/gallery/anc/01-ir.png" alt="" /></div>
   <section class="section-block">
     <p class="section-kicker">Logic</p>
     <h2 class="section-title">How it works</h2>
-    <p class="section-sub" style="margin-bottom:1rem">Detailed interactive control-flow — hover or tap nodes.</p>
+    <p class="section-sub" style="margin-bottom:1rem">Play the pipeline or hover stages — tip, legend, and edges stay in sync.</p>
     <div data-diagram="anc" data-detailed="1"></div>
   </section>
   <section class="section-block prose reveal">
     <p class="section-kicker">Description</p>
     <h2 class="section-title">Project narrative</h2>
     <h2>What it does</h2>
-<p>Speaker-mode ANC lab with honest latency physics: FxLMS simulation, WASAPI secondary-path IR, realtime experiments.</p>
-<h2>Pipeline</h2>
-<p>Measure IR → estimate delay → filtered-x LMS with ref/error mics → residual. Bench IR peak ≈ <strong>43.7 ms @ 48 kHz</strong>.</p>
-    <p class="note">Research prototype - NCR license.</p>
+<p>Measures secondary-path IR (bench peak ≈ 43.7 ms @ 48 kHz), models the plant, and runs FxLMS offline / realtime prototypes for active noise cancellation.</p>
+<h2>Evidence</h2>
+<ul><li>Measured IR plot</li><li>FxLMS residual / sec-path / sim panels</li></ul>
   </section>
-  
   <section class="section-block reveal">
     <p class="section-kicker">In action</p>
     <h2 class="section-title">Screenshot carousel</h2>
-    <div class="carousel" data-carousel data-captions='["Result - secondary-path IR", "UI - IR lab view", "Overview", "Result - FxLMS error decay"]'>
-      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/anc/01-ir.png" alt="Result - secondary-path IR" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/anc/02-lab.png" alt="UI - IR lab view" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/anc/03-overview.png" alt="Overview" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/anc/04-sim.png" alt="Result - FxLMS error decay" loading="lazy" /></div></div></div>
-      <div class="carousel-caption"><strong data-cap>Result - secondary-path IR</strong>
+    <div class="carousel" data-carousel data-captions='["Result — measured secondary-path IR", "Result — FxLMS residual error", "Result — secondary-path model", "Result — sim panels (noise / anti-noise / error)"]'>
+      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/anc/01-ir.png" alt="Result — measured secondary-path IR" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/anc/07-sim-error.png" alt="Result — FxLMS residual error" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/anc/08-sec-path.png" alt="Result — secondary-path model" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/anc/09-sim-panels.png" alt="Result — sim panels (noise / anti-noise / error)" loading="lazy" /></div></div></div>
+      <div class="carousel-caption"><strong data-cap>Result — measured secondary-path IR</strong>
         <div class="carousel-nav">
           <button class="carousel-btn" type="button" data-prev aria-label="Previous">‹</button>
           <button class="carousel-btn" type="button" data-next aria-label="Next">›</button>
@@ -62,7 +66,6 @@
     </div>
   </section>
 
-  
   <section class="section-block reveal">
     <p class="section-kicker">Demo</p>
     <h2 class="section-title">Short walkthrough</h2>
@@ -71,16 +74,16 @@
         <source src="../assets/videos/anc-demo.mp4" type="video/mp4" />
       </video>
       <div class="meta">
-        <span>FxLMS ANC Lab - under 30s</span>
-        <span>Swap in a live screen capture when ready</span>
+        <span>FxLMS ANC Lab — under 30s</span>
+        <span>Real app capture</span>
       </div>
     </div>
   </section>
 
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov - MTUCI - Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> - <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
+  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
 <script src="../app.js"></script>
 </body></html>

@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PLER 2.0 — Peak Length to Error Ratio — Gleb Voronkov</title>
   <meta name="description" content="Full-reference geometric fidelity for 3D assets." />
+  <meta property="og:title" content="PLER 2.0 — Peak Length to Error Ratio — Gleb Voronkov" />
+  <meta property="og:description" content="Full-reference geometric fidelity for 3D assets." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/gallery/pler/01-comparison.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -16,25 +21,26 @@
     <a class="nav-brand" href="../index.html">Gleb Voronkov</a>
     <div class="nav-links">
       <a href="../index.html" data-nav="home">Home</a>
-      <a href="index.html" data-nav="work">Work</a>
+      <a href="../projects/index.html" data-nav="work">Work</a>
       <a href="../publications.html" data-nav="pubs">Publications</a>
       <a href="../about.html" data-nav="about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
+      <a class="ext" href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="cv" href="../assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>CV</a>
     </div>
   </nav>
 </header>
-
 <section class="page-hero"><div class="wrap">
   <h1>PLER 2.0 — Peak Length to Error Ratio</h1>
   <p class="tagline">Full-reference geometric fidelity for 3D assets.</p>
-  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/pler-3d-quality" target="_blank" rel="noopener">GitHub</a><a class="chip-link" href="../assets/papers/pler-geometric-fidelity.pdf" target="_blank" rel="noopener">Paper PDF</a><a class="chip-link secondary" href="bench.html">Bench</a></div>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/pler-3d-quality" target="_blank" rel="noopener">GitHub</a><a class="chip-link" href="../assets/papers/pler-geometric-fidelity.pdf" target="_blank" rel="noopener">Paper PDF</a><a class="chip-link secondary" href="../projects/bench.html">Bench</a></div>
 </div></section>
 <main class="wrap">
   <div class="cover-band reveal"><img src="../assets/gallery/pler/01-comparison.png" alt="" /></div>
   <section class="section-block">
     <p class="section-kicker">Logic</p>
     <h2 class="section-title">How it works</h2>
-    <p class="section-sub" style="margin-bottom:1rem">Detailed interactive control-flow — hover or tap nodes.</p>
+    <p class="section-sub" style="margin-bottom:1rem">Play the pipeline or hover stages — tip, legend, and edges stay in sync.</p>
     <div data-diagram="pler" data-detailed="1"></div>
   </section>
   <section class="section-block prose reveal">
@@ -46,25 +52,23 @@
 <p>Load &amp; normalize → enclose in sphere → sample ray origins → intersect both meshes → aggregate MSE → optional topology / MOS regressor → report score. Open3D / Trimesh with research batch modes.</p>
 <h2>Evidence</h2>
 <ul><li>Paper figures for method and Fibonacci sampling</li><li>Local plots: comparison, convergence, ray analysis</li><li>Cache acceleration up to ~1.8–3.7× on repeat runs</li></ul>
-    <p class="note">Non-commercial research license.</p>
+<p class="note">Non-commercial research license.</p>
   </section>
-  
   <section class="section-block reveal">
     <p class="section-kicker">In action</p>
     <h2 class="section-title">Screenshot carousel</h2>
-    <div class="carousel" data-carousel data-captions='["Result - mesh comparison", "Result - convergence", "Result - ray analysis", "Paper - method figure", "Paper - Fibonacci sampling", "UI - comparison view"]'>
-      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/pler/01-comparison.png" alt="Result - mesh comparison" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/02-convergence.png" alt="Result - convergence" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/03-ray-analysis.png" alt="Result - ray analysis" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/04-method.png" alt="Paper - method figure" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/05-fibonacci.png" alt="Paper - Fibonacci sampling" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/06-ui.png" alt="UI - comparison view" loading="lazy" /></div></div></div>
-      <div class="carousel-caption"><strong data-cap>Result - mesh comparison</strong>
+    <div class="carousel" data-carousel data-captions='["Result — mesh comparison (эталон vs искажение / reference vs distorted)", "Result — convergence", "Result — ray analysis", "Paper — method figure", "Paper — Fibonacci sampling"]'>
+      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/pler/01-comparison.png" alt="Result — mesh comparison (эталон vs искажение / reference vs distorted)" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/02-convergence.png" alt="Result — convergence" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/03-ray-analysis.png" alt="Result — ray analysis" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/04-method.png" alt="Paper — method figure" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/pler/05-fibonacci.png" alt="Paper — Fibonacci sampling" loading="lazy" /></div></div></div>
+      <div class="carousel-caption"><strong data-cap>Result — mesh comparison (эталон vs искажение / reference vs distorted)</strong>
         <div class="carousel-nav">
           <button class="carousel-btn" type="button" data-prev aria-label="Previous">‹</button>
           <button class="carousel-btn" type="button" data-next aria-label="Next">›</button>
         </div>
       </div>
-      <div class="carousel-dots"><button type="button" data-dot="0" aria-label="Slide 1" class="active"></button><button type="button" data-dot="1" aria-label="Slide 2"></button><button type="button" data-dot="2" aria-label="Slide 3"></button><button type="button" data-dot="3" aria-label="Slide 4"></button><button type="button" data-dot="4" aria-label="Slide 5"></button><button type="button" data-dot="5" aria-label="Slide 6"></button></div>
+      <div class="carousel-dots"><button type="button" data-dot="0" aria-label="Slide 1" class="active"></button><button type="button" data-dot="1" aria-label="Slide 2"></button><button type="button" data-dot="2" aria-label="Slide 3"></button><button type="button" data-dot="3" aria-label="Slide 4"></button><button type="button" data-dot="4" aria-label="Slide 5"></button></div>
     </div>
   </section>
 
-  
   <section class="section-block reveal">
     <p class="section-kicker">Demo</p>
     <h2 class="section-title">Short walkthrough</h2>
@@ -73,16 +77,16 @@
         <source src="../assets/videos/pler-demo.mp4" type="video/mp4" />
       </video>
       <div class="meta">
-        <span>PLER 2.0 — Peak Length to Error Ratio - under 30s</span>
-        <span>Swap in a live screen capture when ready</span>
+        <span>PLER 2.0 — Peak Length to Error Ratio — under 30s</span>
+        <span>Real app capture</span>
       </div>
     </div>
   </section>
 
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov - MTUCI - Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> - <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
+  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
 <script src="../app.js"></script>
 </body></html>

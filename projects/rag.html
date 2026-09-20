@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PS Core RAG Assistant — Gleb Voronkov</title>
-  <meta name="description" content="Local RAG for packet-core docs — LangChain, Chroma, Ollama Qwen2.5:7B." />
+  <meta name="description" content="Local Qwen + Chroma for packet-core docs." />
+  <meta property="og:title" content="PS Core RAG Assistant — Gleb Voronkov" />
+  <meta property="og:description" content="Local Qwen + Chroma for packet-core docs." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/gallery/rag/01-ui.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -16,25 +21,26 @@
     <a class="nav-brand" href="../index.html">Gleb Voronkov</a>
     <div class="nav-links">
       <a href="../index.html" data-nav="home">Home</a>
-      <a href="index.html" data-nav="work">Work</a>
+      <a href="../projects/index.html" data-nav="work">Work</a>
       <a href="../publications.html" data-nav="pubs">Publications</a>
       <a href="../about.html" data-nav="about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
+      <a class="ext" href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="cv" href="../assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>CV</a>
     </div>
   </nav>
 </header>
-
 <section class="page-hero"><div class="wrap">
   <h1>PS Core RAG Assistant</h1>
-  <p class="tagline">Local RAG for packet-core docs — LangChain, Chroma, Ollama Qwen2.5:7B.</p>
-  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/pscore-rag-assistant" target="_blank" rel="noopener">GitHub</a><a class="chip-link secondary" href="ai-team.html">AI Team</a></div>
+  <p class="tagline">Local Qwen + Chroma for packet-core docs.</p>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/pscore-rag-assistant" target="_blank" rel="noopener">GitHub</a></div>
 </div></section>
 <main class="wrap">
   <div class="cover-band reveal"><img src="../assets/gallery/rag/01-ui.png" alt="" /></div>
   <section class="section-block">
     <p class="section-kicker">Logic</p>
     <h2 class="section-title">How it works</h2>
-    <p class="section-sub" style="margin-bottom:1rem">Detailed interactive control-flow — hover or tap nodes.</p>
+    <p class="section-sub" style="margin-bottom:1rem">Play the pipeline or hover stages — tip, legend, and edges stay in sync.</p>
     <div data-diagram="rag" data-detailed="1"></div>
   </section>
   <section class="section-block prose reveal">
@@ -42,28 +48,24 @@
     <h2 class="section-title">Project narrative</h2>
     <h2>What it does</h2>
 <p>Builds a local vector knowledge base from telecom / packet-core documents and answers in RU/EN without sending corpus data to the cloud after models are pulled.</p>
-<h2>Pipeline</h2>
-<p>Ingest PDF/MD → chunk → embed (<code>all-MiniLM-L6-v2</code>) → Chroma → retrieve → Qwen2.5:7B via Ollama → answer with sources.</p>
-<ul><li>Console UI for KB build and Q&amp;A</li><li>Synthetic sample docs in public repo</li><li>Typical answers often 5–40 s on NVIDIA</li></ul>
-    
+<h2>Evidence</h2>
+<ul><li>Live console capture</li><li>KB build / Q&amp;A path</li></ul>
   </section>
-  
   <section class="section-block reveal">
     <p class="section-kicker">In action</p>
     <h2 class="section-title">Screenshot carousel</h2>
-    <div class="carousel" data-carousel data-captions='["UI - assistant console", "Overview", "UI - knowledge base build"]'>
-      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/rag/01-ui.png" alt="UI - assistant console" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/rag/02-overview.png" alt="Overview" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/rag/03-kb.png" alt="UI - knowledge base build" loading="lazy" /></div></div></div>
-      <div class="carousel-caption"><strong data-cap>UI - assistant console</strong>
+    <div class="carousel" data-carousel data-captions='["UI — RAG console live capture", "UI — KB build and Q&A"]'>
+      <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/rag/01-ui.png" alt="UI — RAG console live capture" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/rag/03-kb.png" alt="UI — KB build and Q&A" loading="lazy" /></div></div></div>
+      <div class="carousel-caption"><strong data-cap>UI — RAG console live capture</strong>
         <div class="carousel-nav">
           <button class="carousel-btn" type="button" data-prev aria-label="Previous">‹</button>
           <button class="carousel-btn" type="button" data-next aria-label="Next">›</button>
         </div>
       </div>
-      <div class="carousel-dots"><button type="button" data-dot="0" aria-label="Slide 1" class="active"></button><button type="button" data-dot="1" aria-label="Slide 2"></button><button type="button" data-dot="2" aria-label="Slide 3"></button></div>
+      <div class="carousel-dots"><button type="button" data-dot="0" aria-label="Slide 1" class="active"></button><button type="button" data-dot="1" aria-label="Slide 2"></button></div>
     </div>
   </section>
 
-  
   <section class="section-block reveal">
     <p class="section-kicker">Demo</p>
     <h2 class="section-title">Short walkthrough</h2>
@@ -72,16 +74,16 @@
         <source src="../assets/videos/rag-demo.mp4" type="video/mp4" />
       </video>
       <div class="meta">
-        <span>PS Core RAG Assistant - under 30s</span>
-        <span>Swap in a live screen capture when ready</span>
+        <span>PS Core RAG Assistant — under 30s</span>
+        <span>Real app capture</span>
       </div>
     </div>
   </section>
 
 </main>
 <footer class="site-footer"><div class="wrap">
-  <div>© 2026 Gleb Voronkov - MTUCI - Moscow</div>
-  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> - <a href="https://t.me/Gleb_Voronkov">Telegram</a></div>
+  <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
+  <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
 <script src="../app.js"></script>
 </body></html>

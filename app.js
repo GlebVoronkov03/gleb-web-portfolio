@@ -1,10 +1,13 @@
 (() => {
   const touch = matchMedia("(hover: none), (pointer: coarse)").matches;
-  if (touch) document.body.classList.add("is-touch");
+  const fine = matchMedia("(pointer: fine)").matches;
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (touch || !fine) document.body.classList.add("is-touch");
+  if (reduceMotion) document.body.classList.add("reduce-motion");
 
   // ----- custom cursor -----
   let cursor, ring;
-  if (!touch) {
+  if (!touch && fine && !reduceMotion) {
     cursor = document.createElement("div");
     cursor.className = "cursor";
     ring = document.createElement("div");
@@ -80,6 +83,22 @@
       requestAnimationFrame(tick);
     }, { threshold: 0.4 });
     cio.observe(el);
+  });
+
+
+  // ----- publication venue filters -----
+  const pubFilters = document.querySelectorAll("[data-pub-filter]");
+  const pubs = document.querySelectorAll(".pub[data-venue]");
+  pubFilters.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      pubFilters.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const f = btn.getAttribute("data-pub-filter");
+      pubs.forEach((p) => {
+        const ok = f === "all" || p.getAttribute("data-venue") === f;
+        p.classList.toggle("hidden", !ok);
+      });
+    });
   });
 
   // ----- filters -----
@@ -250,8 +269,9 @@
       const info = tips[kind] && tips[kind][key];
       if (!info) return;
       const show = () => {
-        root.querySelectorAll(".node").forEach((x) => x.classList.remove("active"));
-        n.classList.add("active");
+        root.querySelectorAll(".node").forEach((x) => x.classList.remove("active", "flow-hot"));
+        n.classList.add("active", "flow-hot");
+        root.querySelectorAll(".flow-edge").forEach((e) => e.classList.add("flow-anim"));
         tip.innerHTML = "<strong>" + info[0] + "</strong>" + info[1];
         tip.classList.add("show");
         root.querySelectorAll(".logic-legend span").forEach((s) => s.classList.remove("on"));
@@ -316,6 +336,56 @@
         '" x2="200" y2="310"/>';
     }
     return lines;
+  }
+
+
+  function addPlayPipeline(shell, kind) {
+    const order = Object.keys(tips[kind] || {});
+    if (!order.length) return;
+    const bar = document.createElement("div");
+    bar.className = "pipeline-controls";
+    bar.innerHTML = '<button type="button" class="btn-play" data-play>Play pipeline</button><span class="pipeline-status" data-play-status>Step 0 / ' + order.length + "</span>";
+    const before = shell.querySelector(".logic-legend") || shell.querySelector(".diagram-caption");
+    shell.insertBefore(bar, before);
+    let playing = false;
+    let idx = -1;
+    let timer = null;
+    const status = bar.querySelector("[data-play-status]");
+    const btn = bar.querySelector("[data-play]");
+    function activate(key) {
+      const node = shell.querySelector('.node[data-node="' + key + '"]');
+      if (!node) return;
+      shell.querySelectorAll(".node").forEach(function (x) { x.classList.remove("active", "flow-hot"); });
+      node.classList.add("active", "flow-hot");
+      shell.querySelectorAll(".flow-edge").forEach(function (e) { e.classList.add("flow-anim"); });
+      const tip = shell.querySelector(".diagram-tip");
+      const info = tips[kind][key];
+      if (tip && info) {
+        tip.innerHTML = "<strong>" + info[0] + "</strong>" + info[1];
+        tip.classList.add("show");
+      }
+      shell.querySelectorAll(".logic-legend span").forEach(function (s) { s.classList.remove("on"); });
+      const leg = shell.querySelector('[data-leg="' + key + '"]');
+      if (leg) leg.classList.add("on");
+    }
+    function stopPlay() {
+      playing = false;
+      if (timer) clearInterval(timer);
+      timer = null;
+      btn.textContent = "Play pipeline";
+    }
+    btn.addEventListener("click", function () {
+      if (playing) { stopPlay(); return; }
+      playing = true;
+      btn.textContent = "Pause";
+      idx = -1;
+      timer = setInterval(function () {
+        idx += 1;
+        if (idx >= order.length) { stopPlay(); status.textContent = "Done"; return; }
+        activate(order[idx]);
+        status.textContent = "Step " + (idx + 1) + " / " + order.length;
+      }, reduceMotion ? 200 : 900);
+    });
   }
 
   const builders = {
@@ -459,6 +529,7 @@
     el.innerHTML = build();
     var shell = el.querySelector(".diagram-shell");
     wireTips(shell, kind);
+    addPlayPipeline(shell, kind);
     if (typeof io !== "undefined") io.observe(shell);
   });
 
@@ -490,11 +561,22 @@
     dots.forEach(function (d) {
       d.addEventListener("click", function () { go(+d.dataset.dot); });
     });
-    var timer = setInterval(function () { go(i + 1); }, 5000);
-    root.addEventListener("pointerenter", function () { clearInterval(timer); });
-    root.addEventListener("pointerleave", function () {
+    var timer = null;
+    function start() {
+      if (reduceMotion) return;
+      stop();
       timer = setInterval(function () { go(i + 1); }, 5000);
-    });
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    root.addEventListener("pointerenter", stop);
+    root.addEventListener("pointerleave", function () { if (root._inView) start(); });
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        root._inView = e.isIntersecting;
+        if (e.isIntersecting) start(); else stop();
+      });
+    }, { threshold: 0.35 });
+    cio.observe(root);
   });
 
   if (!touch && cursor) {

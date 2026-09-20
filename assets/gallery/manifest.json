@@ -2,138 +2,118 @@
   "pler": [
     {
       "file": "01-comparison.png",
-      "caption": "Result - mesh comparison",
+      "caption": "Result — mesh comparison (эталон vs искажение / reference vs distorted)",
       "bytes": 530895
     },
     {
       "file": "02-convergence.png",
-      "caption": "Result - convergence",
+      "caption": "Result — convergence",
       "bytes": 136426
     },
     {
       "file": "03-ray-analysis.png",
-      "caption": "Result - ray analysis",
+      "caption": "Result — ray analysis",
       "bytes": 471988
     },
     {
       "file": "04-method.png",
-      "caption": "Paper - method figure",
+      "caption": "Paper — method figure",
       "bytes": 58380
     },
     {
       "file": "05-fibonacci.png",
-      "caption": "Paper - Fibonacci sampling",
+      "caption": "Paper — Fibonacci sampling",
       "bytes": 69550
-    },
-    {
-      "file": "06-ui.png",
-      "caption": "UI - comparison view",
-      "bytes": 250926
     }
   ],
   "bench": [
     {
       "file": "01-principle.png",
-      "caption": "Diagram - principle",
+      "caption": "Diagram — principle",
       "bytes": 42864
     },
     {
       "file": "02-architecture.png",
-      "caption": "Diagram - architecture",
+      "caption": "Diagram — architecture",
       "bytes": 74333
     },
     {
       "file": "03-coverage.png",
-      "caption": "Result - coverage",
+      "caption": "Result — coverage",
       "bytes": 98035
     },
     {
       "file": "04-taxonomy.png",
-      "caption": "Diagram - taxonomy",
+      "caption": "Diagram — taxonomy",
       "bytes": 74492
     },
     {
       "file": "05-factorial.png",
-      "caption": "Result - factorial",
+      "caption": "Result — factorial",
       "bytes": 57395
     },
     {
       "file": "06-ui.png",
-      "caption": "UI - Streamlit bench",
-      "bytes": 202947
+      "caption": "UI — Streamlit live capture",
+      "bytes": 144415
     }
   ],
   "rag": [
     {
       "file": "01-ui.png",
-      "caption": "UI - assistant console",
-      "bytes": 286175
-    },
-    {
-      "file": "02-overview.png",
-      "caption": "Overview",
-      "bytes": 37846
+      "caption": "UI — RAG console live capture",
+      "bytes": 54396
     },
     {
       "file": "03-kb.png",
-      "caption": "UI - knowledge base build",
-      "bytes": 309272
+      "caption": "UI — KB build and Q&A",
+      "bytes": 54396
     }
   ],
   "ai-team": [
     {
       "file": "01-ui.png",
-      "caption": "UI - FastAPI agent desk",
-      "bytes": 234451
-    },
-    {
-      "file": "02-overview.png",
-      "caption": "Overview",
-      "bytes": 37995
+      "caption": "UI — orchestrator form live capture",
+      "bytes": 47788
     },
     {
       "file": "03-verify.png",
-      "caption": "UI - verifier / methodology",
-      "bytes": 246633
+      "caption": "UI — team result live capture",
+      "bytes": 29176
     }
   ],
   "anc": [
     {
       "file": "01-ir.png",
-      "caption": "Result - secondary-path IR",
+      "caption": "Result — measured secondary-path IR",
       "bytes": 56504
     },
     {
-      "file": "02-lab.png",
-      "caption": "UI - IR lab view",
-      "bytes": 208710
+      "file": "07-sim-error.png",
+      "caption": "Result — FxLMS residual error",
+      "bytes": 64532
     },
     {
-      "file": "03-overview.png",
-      "caption": "Overview",
-      "bytes": 35758
+      "file": "08-sec-path.png",
+      "caption": "Result — secondary-path model",
+      "bytes": 31563
     },
     {
-      "file": "04-sim.png",
-      "caption": "Result - FxLMS error decay",
-      "bytes": 269771
+      "file": "09-sim-panels.png",
+      "caption": "Result — sim panels (noise / anti-noise / error)",
+      "bytes": 279487
     }
   ],
   "acoustic": [
     {
       "file": "01-ui.png",
-      "caption": "UI - PyQt localization",
-      "bytes": 269581
-    },
-    {
-      "file": "02-overview.png",
-      "caption": "Overview",
-      "bytes": 35056
+      "caption": "UI — PyQt localization live capture",
+      "bytes": 32895
     },
     {
       "file": "03-spectrogram.png",
-      "caption": "UI - spectrogram / export",
-      "bytes": 286767
+      "caption": "UI — spectrogram panel",
+      "bytes": 32895
     }
   ]
 }
