@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Team Orchestrator — Gleb Voronkov</title>
-  <meta name="description" content="LangGraph multi-agent workflow with RAG and Ollama fallback." />
+  <meta name="description" content="LangGraph multi-agent workflow." />
   <meta property="og:title" content="AI Team Orchestrator — Gleb Voronkov" />
-  <meta property="og:description" content="LangGraph multi-agent workflow with RAG and Ollama fallback." />
-  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
+  <meta property="og:description" content="LangGraph multi-agent workflow." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -29,35 +29,18 @@
 
 <section class="page-hero"><div class="wrap">
   <h1>AI Team Orchestrator</h1>
-  <p class="tagline">LangGraph multi-agent workflow with RAG and Ollama fallback.</p>
-  <div class="link-row">
-      <a class="chip-link" href="https://github.com/GlebVoronkov03/ai-team-orchestrator" target="_blank" rel="noopener">GitHub</a>
-      <a class="chip-link secondary" href="https://github.com/GlebVoronkov03/pscore-rag-assistant" target="_blank" rel="noopener">RAG Assistant</a>
-  </div>
+  <p class="tagline">LangGraph multi-agent workflow.</p>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/ai-team-orchestrator" target="_blank" rel="noopener">GitHub</a><a class="chip-link secondary" href="rag.html">RAG</a></div>
 </div></section>
 <main class="wrap">
-  <div class="gallery two">
-    <img src="../assets/screenshots/ai-team-hero.png" alt="AI Team Orchestrator" />
-    <img src="../assets/diagrams/ai-team-architecture.png" alt="AI Team Orchestrator" />
-  </div>
-  <div class="prose">
-
-<h2>Problem</h2>
-<p>Multi-step research and coding need roles, retrieval, and verification — not a single unbounded chat turn.</p>
-<h2>Approach</h2>
-<p>Researcher → engineer → verifier → methodology writer, with Chroma retrieval and DeepSeek/OpenRouter plus local Ollama fallback (<code>qwen2.5-coder</code>).</p>
-<h2>Results</h2>
-<ul>
-  <li>FastAPI UI and optional Telegram bot</li>
-  <li>Prompt IP anonymization helper for safer external LLM calls</li>
-</ul>
-
-  
-  </div>
+  <div class="cover-band reveal"><img src="../assets/covers/cover-agents.png" alt="" /></div>
+  <div data-diagram="agents"></div>
+  <div class="prose reveal"><h2>Problem</h2><p>Multi-step work needs roles and verification.</p>
+<h2>Interactive scheme</h2><p>Click researcher → engineer → verifier → writer.</p></div>
 </main>
 <footer class="site-footer"><div class="wrap">
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
-<script src="../nav.js"></script>
+<script src="../app.js"></script>
 </body></html>

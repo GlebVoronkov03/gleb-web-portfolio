@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PLER 2.0 — Peak Length to Error Ratio — Gleb Voronkov</title>
-  <meta name="description" content="Full-reference metric for the geometric fidelity of 3D assets." />
+  <meta name="description" content="Full-reference geometric fidelity for 3D assets." />
   <meta property="og:title" content="PLER 2.0 — Peak Length to Error Ratio — Gleb Voronkov" />
-  <meta property="og:description" content="Full-reference metric for the geometric fidelity of 3D assets." />
-  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
+  <meta property="og:description" content="Full-reference geometric fidelity for 3D assets." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -29,41 +29,20 @@
 
 <section class="page-hero"><div class="wrap">
   <h1>PLER 2.0 — Peak Length to Error Ratio</h1>
-  <p class="tagline">Full-reference metric for the geometric fidelity of 3D assets.</p>
-  <div class="link-row">
-      <a class="chip-link" href="https://github.com/GlebVoronkov03/pler-3d-quality" target="_blank" rel="noopener">GitHub</a>
-      <a class="chip-link" href="../assets/papers/pler-geometric-fidelity.pdf" target="_blank" rel="noopener">Paper PDF</a>
-      <a class="chip-link secondary" href="https://github.com/GlebVoronkov03/3d-quality-bench" target="_blank" rel="noopener">3D Quality Bench</a>
-  </div>
+  <p class="tagline">Full-reference geometric fidelity for 3D assets.</p>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/pler-3d-quality" target="_blank" rel="noopener">GitHub</a><a class="chip-link" href="../assets/papers/pler-geometric-fidelity.pdf" target="_blank" rel="noopener">Paper PDF</a><a class="chip-link secondary" href="bench.html">Bench</a></div>
 </div></section>
 <main class="wrap">
-  <div class="gallery two">
-    <img src="../assets/screenshots/pler-method.png" alt="PLER 2.0 — Peak Length to Error Ratio" />
-    <img src="../assets/screenshots/pler-fibonacci.png" alt="PLER 2.0 — Peak Length to Error Ratio" />
-    <img src="../assets/screenshots/pler-comparison.png" alt="PLER 2.0 — Peak Length to Error Ratio" />
-    <img src="../assets/screenshots/pler-validation.png" alt="PLER 2.0 — Peak Length to Error Ratio" />
-  </div>
-  <div class="prose">
-
-<h2>Problem</h2>
-<p>Chamfer and Hausdorff distances often diverge from how distortion is perceived on meshes used in XR and media pipelines. Earlier 2D-oriented quality models also transfer poorly to 3D content.</p>
-<blockquote>“The original PLER metric… suffered from non-uniform ray distribution. … The Fibonacci (golden) spiral method was identified as optimal, leading to the development of PLER-2.0.”</blockquote>
-<h2>Approach</h2>
-<p>Reference and test models are enclosed in a sphere. Rays are cast from surface samples toward the center; hit-length differences yield an MSE that is mapped to a logarithmic PLER score — scale-adaptive via the sphere radius, with selective sensitivity in the low-quality region.</p>
-<p>PLER 2.0 upgrades sampling to a Fibonacci spiral so rays cover the surface evenly. The public library adds topology descriptors and an optional MOS regressor for research batches.</p>
-<h2>Results</h2>
-<ul>
-  <li>Uniform sphere sampling study → Fibonacci spiral selected for PLER 2.0</li>
-  <li>Cache acceleration up to ~1.8–3.7× on repeat local runs</li>
-  <li>Open3D / Trimesh pipeline; cross-check bench in <a href="bench.html">3D Quality Bench</a></li>
-</ul>
-
-  <p class="note">Non-commercial research license. Commercial use requires written permission.</p>
-  </div>
+  <div class="cover-band reveal"><img src="../assets/covers/cover-pler.png" alt="" /></div>
+  <div data-diagram="pler"></div>
+  <div class="prose reveal"><h2>Problem</h2><p>Classic mesh distances often miss perceptual geometric fidelity. Early PLER sampling was uneven across the surface.</p>
+<blockquote>Fibonacci (golden) spiral sampling was identified as optimal — PLER 2.0.</blockquote>
+<h2>Interactive scheme</h2><p>Hover nodes on the diagram. On the home page, drag the live Fibonacci sphere.</p>
+<h2>Results</h2><ul><li>Uniform sphere sampling study → Fibonacci spiral</li><li>Cache ~1.8–3.7× on repeat local runs</li></ul><p class="note">Non-commercial research license.</p></div>
 </main>
 <footer class="site-footer"><div class="wrap">
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
-<script src="../nav.js"></script>
+<script src="../app.js"></script>
 </body></html>

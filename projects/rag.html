@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PS Core RAG Assistant — Gleb Voronkov</title>
-  <meta name="description" content="Local RAG for packet-core documentation — LangChain, Chroma, Ollama Qwen2.5:7B." />
+  <meta name="description" content="Local LangChain + Chroma + Ollama Qwen2.5:7B." />
   <meta property="og:title" content="PS Core RAG Assistant — Gleb Voronkov" />
-  <meta property="og:description" content="Local RAG for packet-core documentation — LangChain, Chroma, Ollama Qwen2.5:7B." />
-  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
+  <meta property="og:description" content="Local LangChain + Chroma + Ollama Qwen2.5:7B." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -29,35 +29,19 @@
 
 <section class="page-hero"><div class="wrap">
   <h1>PS Core RAG Assistant</h1>
-  <p class="tagline">Local RAG for packet-core documentation — LangChain, Chroma, Ollama Qwen2.5:7B.</p>
-  <div class="link-row">
-      <a class="chip-link" href="https://github.com/GlebVoronkov03/pscore-rag-assistant" target="_blank" rel="noopener">GitHub</a>
-      <a class="chip-link secondary" href="https://github.com/GlebVoronkov03/ai-team-orchestrator" target="_blank" rel="noopener">AI Team</a>
-  </div>
+  <p class="tagline">Local LangChain + Chroma + Ollama Qwen2.5:7B.</p>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/pscore-rag-assistant" target="_blank" rel="noopener">GitHub</a><a class="chip-link secondary" href="ai-team.html">AI Team</a></div>
 </div></section>
 <main class="wrap">
-  <div class="gallery two">
-    <img src="../assets/screenshots/rag-hero.png" alt="PS Core RAG Assistant" />
-    <img src="../assets/diagrams/rag-architecture.png" alt="PS Core RAG Assistant" />
-  </div>
-  <div class="prose">
-
-<h2>Problem</h2>
-<p>Searching multi-hundred-page telecom standards is slow; cloud LLMs are often blocked on operator networks.</p>
-<h2>Approach</h2>
-<p>Documents are chunked, embedded (all-MiniLM-L6-v2), stored in Chroma, and answered by a local Qwen2.5:7B via Ollama — RU/EN, data stays on-box after pull.</p>
-<h2>Results</h2>
-<ul>
-  <li>Public repo ships synthetic sample docs; production used larger private corpora</li>
-  <li>Typical answers often 5–40 s on a capable NVIDIA workstation</li>
-</ul>
-
-  
-  </div>
+  <div class="cover-band reveal"><img src="../assets/covers/cover-rag.png" alt="" /></div>
+  <div data-diagram="rag"></div>
+  <div class="prose reveal"><h2>Problem</h2><p>Telecom standards are huge; cloud LLMs are often blocked.</p>
+<h2>Interactive scheme</h2><p>Step the local RAG stages — docs → embed → Chroma → Qwen.</p>
+<h2>Results</h2><ul><li>Synthetic samples in public repo</li><li>Answers often 5–40s on NVIDIA</li></ul></div>
 </main>
 <footer class="site-footer"><div class="wrap">
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
-<script src="../nav.js"></script>
+<script src="../app.js"></script>
 </body></html>

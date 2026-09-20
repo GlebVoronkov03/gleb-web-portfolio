@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FxLMS ANC Lab — Gleb Voronkov</title>
-  <meta name="description" content="Active noise control research: simulation, IR measurement, realtime experiments." />
+  <meta name="description" content="ANC research with measured IR delay." />
   <meta property="og:title" content="FxLMS ANC Lab — Gleb Voronkov" />
-  <meta property="og:description" content="Active noise control research: simulation, IR measurement, realtime experiments." />
-  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
+  <meta property="og:description" content="ANC research with measured IR delay." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -29,36 +29,18 @@
 
 <section class="page-hero"><div class="wrap">
   <h1>FxLMS ANC Lab</h1>
-  <p class="tagline">Active noise control research: simulation, IR measurement, realtime experiments.</p>
-  <div class="link-row">
-      <a class="chip-link" href="https://github.com/GlebVoronkov03/fxlms-anc-lab" target="_blank" rel="noopener">GitHub</a>
-      <a class="chip-link secondary" href="acoustic.html">Acoustic Localization</a>
-  </div>
+  <p class="tagline">ANC research with measured IR delay.</p>
+  <div class="link-row"><a class="chip-link" href="https://github.com/GlebVoronkov03/fxlms-anc-lab" target="_blank" rel="noopener">GitHub</a><a class="chip-link secondary" href="acoustic.html">Acoustic</a></div>
 </div></section>
 <main class="wrap">
-  <div class="gallery two">
-    <img src="../assets/screenshots/anc-ir.png" alt="FxLMS ANC Lab" />
-    <img src="../assets/diagrams/anc-architecture.png" alt="FxLMS ANC Lab" />
-    <img src="../assets/screenshots/anc-hero.png" alt="FxLMS ANC Lab" />
-  </div>
-  <div class="prose">
-
-<h2>Problem</h2>
-<p>Speaker-mode ANC is latency-bound; marketing claims often ignore secondary-path delay and quiet-zone physics.</p>
-<h2>Approach</h2>
-<p>Offline FxLMS simulation, WASAPI IR measurement, and documented realtime experiments — protocols before “AI magic.”</p>
-<h2>Results</h2>
-<ul>
-  <li>Secondary-path peak ≈ 43.7 ms @ 48 kHz on the laptop bench (one IR capture)</li>
-  <li>Science and hardware notes under <code>docs/</code></li>
-</ul>
-
-  <p class="note">Non-commercial research license. Not a shipping consumer product.</p>
-  </div>
+  <div class="cover-band reveal"><img src="../assets/covers/cover-anc.png" alt="" /></div>
+  <div data-diagram="anc"></div>
+  <div class="prose reveal"><h2>Problem</h2><p>Speaker ANC is latency-bound — claims need IR evidence.</p>
+<h2>Interactive scheme</h2><p>Inspect ref mic → FxLMS → speaker → error path and the 43.7 ms node.</p><p class="note">Research prototype · NCR license.</p></div>
 </main>
 <footer class="site-footer"><div class="wrap">
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
-<script src="../nav.js"></script>
+<script src="../app.js"></script>
 </body></html>

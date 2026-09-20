@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gleb Voronkov — ML Engineer & R&D</title>
-  <meta name="description" content="ML engineer building LLM/RAG systems, original 3D quality metrics, and acoustic DSP research." />
-  <meta property="og:title" content="Gleb Voronkov — ML Engineer & R&D" />
-  <meta property="og:description" content="ML engineer building LLM/RAG systems, original 3D quality metrics, and acoustic DSP research." />
-  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/screenshots/hero-plane.jpg" />
+  <title>Gleb Voronkov — ML Engineer</title>
+  <meta name="description" content="Interactive portfolio: LLM/RAG, PLER 2.0 3D metrics, acoustic DSP." />
+  <meta property="og:title" content="Gleb Voronkov — ML Engineer" />
+  <meta property="og:description" content="Interactive portfolio: LLM/RAG, PLER 2.0 3D metrics, acoustic DSP." />
+  <meta property="og:image" content="https://glebvoronkov03.github.io/gleb-web-portfolio/assets/covers/hero-cover.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -28,82 +28,69 @@
 </header>
 
 <section class="hero">
-  <div class="hero-media" aria-hidden="true"></div>
-  <div class="hero-inner">
+  <div class="hero-copy">
     <p class="eyebrow">ML Engineer · R&amp;D · Moscow</p>
     <p class="brand">Gleb Voronkov</p>
-    <h1>Research systems that survive past the demo</h1>
-    <p class="lead">Local RAG products, an original full-reference 3D fidelity metric (PLER 2.0), virtual-production tooling, and acoustic DSP — grounded in papers, measurements, and shipped tools.</p>
+    <h1>Systems that ship — with physics and papers attached</h1>
+    <p class="lead">Local RAG products, PLER 2.0 geometric fidelity, virtual production, and acoustic DSP. Move the sphere. Click every diagram.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="projects/index.html">Selected work</a>
-      <a class="btn btn-ghost" href="publications.html">Publications &amp; IP</a>
+      <a class="btn btn-primary" href="projects/index.html">Explore work</a>
+      <a class="btn btn-ghost" href="publications.html">Papers &amp; PDFs</a>
     </div>
   </div>
-</section>
-
-<section class="wrap reveal" style="padding-bottom:0">
-  <div class="proof">
-    <div class="proof-item"><strong>MAPE &lt; 5%</strong><span>Core-network load forecast, 7-day horizon</span></div>
-    <div class="proof-item"><strong>PLER 2.0</strong><span>Fibonacci-sphere geometric fidelity metric</span></div>
-    <div class="proof-item"><strong>№ 2024682445</strong><span>CaT-3D motion-capture software (Rospatent)</span></div>
+  <div class="hero-stage" id="hero-canvas">
+    <span class="hint">Drag · Fibonacci sphere · PLER rays</span>
   </div>
 </section>
 
 <section class="wrap">
-  <div class="section-head">
-    <p class="section-kicker">Selected work</p>
-    <h2 class="section-title">Projects with outcomes</h2>
-    <p class="section-sub">Case studies first — GitHub and papers linked on each page.</p>
+    <div class="proof reveal">
+    <div class="proof-item"><strong>&lt; 5%</strong><span>MAPE · core-network 7-day forecast</span></div>
+    <div class="proof-item"><strong>2.0</strong><span>PLER Fibonacci-sphere revision</span></div>
+    <div class="proof-item"><strong data-count="43.7">0</strong><span>ms secondary-path IR peak @ 48 kHz</span></div>
   </div>
+</section>
 
-  <article class="case">
-    <div class="case-media"><a href="projects/pler.html"><img src="assets/screenshots/pler-method.png" alt="PLER ray method" /></a></div>
-    <div>
-      <p class="case-num">01 / Research metric</p>
-      <h3><a href="projects/pler.html">PLER 2.0 — geometric fidelity of 3D assets</a></h3>
-      <p>Full-reference metric casting rays from a bounding sphere. PLER 2.0 replaces uneven sampling with a Fibonacci (golden) spiral for stable, scale-invariant scores.</p>
-      <div class="case-meta"><span class="pill">3D QA</span><span class="pill">Open3D</span><span class="pill">Paper</span></div>
-      <div class="case-links">
-        <a class="text-link" href="projects/pler.html">Case study</a>
-        <a class="text-link" href="https://github.com/GlebVoronkov03/pler-3d-quality">GitHub</a>
-        <a class="text-link" href="assets/papers/pler-geometric-fidelity.pdf">PDF</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="case">
-    <div class="case-media"><a href="projects/rag.html"><img src="assets/screenshots/rag-hero.png" alt="RAG assistant" /></a></div>
-    <div>
-      <p class="case-num">02 / Production LLM</p>
-      <h3><a href="projects/rag.html">PS Core RAG — local docs assistant</a></h3>
-      <p>LangChain + Chroma + Ollama Qwen2.5:7B for packet-core documentation — answers stay on-device after models are pulled.</p>
-      <div class="case-meta"><span class="pill">RAG</span><span class="pill">Qwen2.5</span><span class="pill">LangChain</span></div>
-      <div class="case-links">
-        <a class="text-link" href="projects/rag.html">Case study</a>
-        <a class="text-link" href="https://github.com/GlebVoronkov03/pscore-rag-assistant">GitHub</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="case">
-    <div class="case-media"><a href="projects/anc.html"><img src="assets/screenshots/anc-ir.png" alt="ANC IR" /></a></div>
-    <div>
-      <p class="case-num">03 / Acoustic DSP</p>
-      <h3><a href="projects/anc.html">FxLMS ANC Lab</a></h3>
-      <p>Simulation, IR measurement, and realtime experiments with honest latency physics — secondary-path peak ≈ 43.7 ms @ 48 kHz on the bench.</p>
-      <div class="case-meta"><span class="pill">ANC</span><span class="pill">FxLMS</span><span class="pill">WASAPI</span></div>
-      <div class="case-links">
-        <a class="text-link" href="projects/anc.html">Case study</a>
-        <a class="text-link" href="https://github.com/GlebVoronkov03/fxlms-anc-lab">GitHub</a>
-      </div>
-    </div>
-  </article>
-
-  <p style="margin-top:2rem"><a class="text-link" href="projects/index.html">All six projects →</a></p>
+<section class="wrap" style="padding-top:1rem">
+  <p class="section-kicker">Selected work</p>
+  <h2 class="section-title">Interactive case studies</h2>
+  <p class="section-sub">Filter by domain. Each project page has a live SVG scheme — not a static PNG.</p>
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all" type="button">All</button>
+    <button class="filter-btn" data-filter="3d" type="button">3D / CV</button>
+    <button class="filter-btn" data-filter="llm" type="button">LLM</button>
+    <button class="filter-btn" data-filter="audio" type="button">Audio</button>
+  </div>
+  <div class="work-grid">
+    <a class="work-card reveal" data-tags="3d" href="projects/pler.html">
+      <img src="assets/covers/cover-pler.png" alt="PLER" />
+      <div class="body"><p class="num">01 · Research</p><h3>PLER 2.0</h3><p>Geometric fidelity with interactive ray diagram</p></div>
+    </a>
+    <a class="work-card reveal" data-tags="llm" href="projects/rag.html">
+      <img src="assets/covers/cover-rag.png" alt="RAG" />
+      <div class="body"><p class="num">02 · Product</p><h3>PS Core RAG</h3><p>Local Qwen pipeline you can step through</p></div>
+    </a>
+    <a class="work-card reveal" data-tags="audio" href="projects/anc.html">
+      <img src="assets/covers/cover-anc.png" alt="ANC" />
+      <div class="body"><p class="num">03 · DSP</p><h3>FxLMS ANC Lab</h3><p>Live cancellation loop + measured delay</p></div>
+    </a>
+    <a class="work-card reveal" data-tags="llm" href="projects/ai-team.html">
+      <img src="assets/covers/cover-agents.png" alt="Agents" />
+      <div class="body"><p class="num">04 · Agents</p><h3>AI Team</h3><p>Clickable LangGraph role graph</p></div>
+    </a>
+    <a class="work-card reveal" data-tags="3d" href="projects/bench.html">
+      <img src="assets/covers/cover-bench.png" alt="Bench" />
+      <div class="body"><p class="num">05 · Bench</p><h3>3D Quality Bench</h3><p>Degrade → metrics → MOS</p></div>
+    </a>
+    <a class="work-card reveal" data-tags="audio" href="projects/acoustic.html">
+      <img src="assets/covers/cover-acoustic.png" alt="Acoustic" />
+      <div class="body"><p class="num">06 · Audio</p><h3>Localization</h3><p>ILD/ITD stimulus lab</p></div>
+    </a>
+  </div>
 </section>
 <footer class="site-footer"><div class="wrap">
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
-<script src="nav.js"></script>
+<script src="app.js"></script>
 </body></html>
