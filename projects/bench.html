@@ -14,19 +14,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("gv-theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var l = localStorage.getItem("gv-lang") || "en";
+        document.documentElement.setAttribute("lang", l === "zh" ? "zh-CN" : l);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 <header class="site-header">
   <nav class="nav">
     <a class="nav-brand" href="../index.html">Gleb Voronkov</a>
     <div class="nav-links">
-      <a href="../index.html" data-nav="home">Home</a>
-      <a href="../projects/index.html" data-nav="work">Work</a>
-      <a href="../publications.html" data-nav="pubs">Publications</a>
-      <a href="../about.html" data-nav="about">About</a>
+      <a href="../index.html" data-nav="home" data-i18n="nav.home">Home</a>
+      <a href="../projects/index.html" data-nav="work" data-i18n="nav.work">Work</a>
+      <a href="../publications.html" data-nav="pubs" data-i18n="nav.pubs">Publications</a>
+      <a href="../about.html" data-nav="about" data-i18n="nav.about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
       <a class="ext" href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="cv" href="../assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>CV</a>
+      <a class="cv" href="../assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download data-i18n="nav.cv">CV</a>
     </div>
   </nav>
 </header>
@@ -38,22 +51,22 @@
 <main class="wrap">
   <div class="cover-band reveal"><img src="../assets/gallery/bench/01-principle.png" alt="" /></div>
   <section class="section-block">
-    <p class="section-kicker">Logic</p>
-    <h2 class="section-title">How it works</h2>
-    <p class="section-sub" style="margin-bottom:1rem">Play the pipeline or hover stages — tip, legend, and edges stay in sync.</p>
+    <p class="section-kicker" data-i18n="proj.logic">Logic</p>
+    <h2 class="section-title" data-i18n="proj.how">How it works</h2>
+    <p class="section-sub" style="margin-bottom:1rem" data-i18n="proj.howSub">Play the pipeline or hover stages — tip, legend, and edges stay in sync.</p>
     <div data-diagram="bench" data-detailed="1"></div>
   </section>
   <section class="section-block prose reveal">
-    <p class="section-kicker">Description</p>
-    <h2 class="section-title">Project narrative</h2>
+    <p class="section-kicker" data-i18n="proj.desc">Description</p>
+    <h2 class="section-title" data-i18n="proj.narrative">Project narrative</h2>
     <h2>What it does</h2>
 <p>Streamlit research console: import OBJ, apply controlled degradations, batch PLER and classic geometric metrics, normalize scores, and compare against MOS with PLCC / SROCC.</p>
 <h2>Evidence</h2>
 <ul><li>Architecture and taxonomy diagrams</li><li>Live Streamlit UI capture</li><li>Coverage / factorial result frames</li></ul>
   </section>
   <section class="section-block reveal">
-    <p class="section-kicker">In action</p>
-    <h2 class="section-title">Screenshot carousel</h2>
+    <p class="section-kicker" data-i18n="proj.action">In action</p>
+    <h2 class="section-title" data-i18n="proj.carousel">Screenshot carousel</h2>
     <div class="carousel" data-carousel data-captions='["Diagram — principle", "Diagram — architecture", "Result — coverage", "Diagram — taxonomy", "Result — factorial", "UI — Streamlit live capture"]'>
       <div class="carousel-viewport"><div class="carousel-track"><div class="carousel-slide"><img src="../assets/gallery/bench/01-principle.png" alt="Diagram — principle" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/02-architecture.png" alt="Diagram — architecture" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/03-coverage.png" alt="Result — coverage" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/04-taxonomy.png" alt="Diagram — taxonomy" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/05-factorial.png" alt="Result — factorial" loading="lazy" /></div><div class="carousel-slide"><img src="../assets/gallery/bench/06-ui.png" alt="UI — Streamlit live capture" loading="lazy" /></div></div></div>
       <div class="carousel-caption"><strong data-cap>Diagram — principle</strong>
@@ -67,15 +80,15 @@
   </section>
 
   <section class="section-block reveal">
-    <p class="section-kicker">Demo</p>
-    <h2 class="section-title">Short walkthrough</h2>
+    <p class="section-kicker" data-i18n="proj.demo">Demo</p>
+    <h2 class="section-title" data-i18n="proj.walk">Short walkthrough</h2>
     <div class="demo-video">
       <video controls playsinline preload="metadata" poster="../assets/gallery/bench/01-principle.png">
         <source src="../assets/videos/bench-demo.mp4" type="video/mp4" />
       </video>
       <div class="meta">
-        <span>3D Quality Bench — under 30s</span>
-        <span>Real app capture</span>
+        <span>3D Quality Bench  — <span data-i18n="proj.under30">under 30s</span></span>
+        <span data-i18n="proj.real">Real app capture</span>
       </div>
     </div>
   </section>
@@ -85,5 +98,6 @@
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
+<script src="../i18n.js"></script>
 <script src="../app.js"></script>
 </body></html>

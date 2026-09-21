@@ -14,46 +14,60 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("gv-theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var l = localStorage.getItem("gv-lang") || "en";
+        document.documentElement.setAttribute("lang", l === "zh" ? "zh-CN" : l);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 <header class="site-header">
   <nav class="nav">
     <a class="nav-brand" href="index.html">Gleb Voronkov</a>
     <div class="nav-links">
-      <a href="index.html" data-nav="home">Home</a>
-      <a href="projects/index.html" data-nav="work">Work</a>
-      <a href="publications.html" data-nav="pubs">Publications</a>
-      <a href="about.html" data-nav="about">About</a>
+      <a href="index.html" data-nav="home" data-i18n="nav.home">Home</a>
+      <a href="projects/index.html" data-nav="work" data-i18n="nav.work">Work</a>
+      <a href="publications.html" data-nav="pubs" data-i18n="nav.pubs">Publications</a>
+      <a href="about.html" data-nav="about" data-i18n="nav.about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
       <a class="ext" href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="cv" href="assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>CV</a>
+      <a class="cv" href="assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download data-i18n="nav.cv">CV</a>
     </div>
   </nav>
 </header>
 <section class="page-hero"><div class="wrap">
-  <p class="section-kicker">About</p>
-  <h1>Between lab and product</h1>
-  <p class="tagline">MTUCI R&amp;D · Telcore · Beeline — claims tied to measurements and papers.</p>
+  <p class="section-kicker" data-i18n="about.kicker">About</p>
+  <h1 data-i18n="about.h1">Between lab and product</h1>
+  <p class="tagline" data-i18n="about.tag">MTUCI R&amp;D · Telcore · Beeline — claims tied to measurements and papers.</p>
 </div></section>
 <main class="wrap prose reveal">
   <div class="cover-band"><img src="assets/figures/cert-page1.png" alt="CaT-3D software registration certificate" /></div>
-  <p class="note">CaT-3D · Rospatent № 2024682445 (EN: video-to-anthropomorphic motion capture registration)</p>
-  <p>Master’s student at <strong>MTUCI</strong>, Research Department “Digital Television and Video-informatics”. I build local RAG systems, original 3D quality metrics (PLER 2.0), and acoustic DSP labs — then publish the evidence.</p>
-  <p><strong>ARTCam</strong> / <strong>CaT-3D</strong>: virtual-production and motion-capture tooling in Unreal Engine. Software registration № 2024682445 (Rospatent, 23 Sep 2024).</p>
+  <p class="note" data-i18n="about.cert">CaT-3D · Rospatent № 2024682445 (EN: video-to-anthropomorphic motion capture registration)</p>
+  <p data-i18n="about.p1">Master’s student at MTUCI, Research Department “Digital Television and Video-informatics”. I build local RAG systems, original 3D quality metrics (PLER 2.0), and acoustic DSP labs — then publish the evidence.</p>
+  <p data-i18n="about.p2">ARTCam / CaT-3D: virtual-production and motion-capture tooling in Unreal Engine. Software registration № 2024682445 (Rospatent, 23 Sep 2024).</p>
   <div class="cover-band" style="margin-top:1.25rem"><img src="assets/covers/hero-cover.png" alt="ARTCam / virtual production still" /></div>
-  <p class="note">ARTCam / virtual-production still from the portfolio cover set</p>
-  <h2>Experience</h2>
+  <p class="note" data-i18n="about.still">ARTCam / virtual-production still from the portfolio cover set</p>
+  <h2 data-i18n="about.exp">Experience</h2>
   <ul class="timeline">
     <li><strong>AI/ML Systems &amp; Solutions Engineer — Telcore</strong><span>Jan 2026 – Present</span></li>
     <li><strong>PS Core Engineer (AI &amp; Automation) — Beeline</strong><span>Jun 2025 – Present</span></li>
     <li><strong>Project Lead ARTCam / CaT-3D — MTUCI Research</strong><span>Jan 2023 – Present</span></li>
   </ul>
-  <h2>Contact</h2>
-  <p><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="mailto:glebvoronkov03@gmail.com">glebvoronkov03@gmail.com</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>Download CV</a></p>
+  <h2 data-i18n="about.contact">Contact</h2>
+  <p><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="mailto:glebvoronkov03@gmail.com">glebvoronkov03@gmail.com</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download data-i18n="about.cv">Download CV</a></p>
 </main>
 <footer class="site-footer"><div class="wrap">
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 </body></html>

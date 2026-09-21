@@ -14,80 +14,93 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("gv-theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var l = localStorage.getItem("gv-lang") || "en";
+        document.documentElement.setAttribute("lang", l === "zh" ? "zh-CN" : l);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 <header class="site-header">
   <nav class="nav">
     <a class="nav-brand" href="index.html">Gleb Voronkov</a>
     <div class="nav-links">
-      <a href="index.html" data-nav="home">Home</a>
-      <a href="projects/index.html" data-nav="work">Work</a>
-      <a href="publications.html" data-nav="pubs">Publications</a>
-      <a href="about.html" data-nav="about">About</a>
+      <a href="index.html" data-nav="home" data-i18n="nav.home">Home</a>
+      <a href="projects/index.html" data-nav="work" data-i18n="nav.work">Work</a>
+      <a href="publications.html" data-nav="pubs" data-i18n="nav.pubs">Publications</a>
+      <a href="about.html" data-nav="about" data-i18n="nav.about">About</a>
       <a class="ext" href="https://github.com/GlebVoronkov03" target="_blank" rel="noopener">GitHub</a>
       <a class="ext" href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="cv" href="assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download>CV</a>
+      <a class="cv" href="assets/Gleb_Voronkov_CV_AI_Telecom_EN.pdf" download data-i18n="nav.cv">CV</a>
     </div>
   </nav>
 </header>
 <section class="hero">
   <div class="hero-copy">
-    <p class="eyebrow">ML Engineer · R&amp;D · Moscow</p>
+    <p class="eyebrow" data-i18n="home.eyebrow">ML Engineer · R&amp;D · Moscow</p>
     <p class="brand">Gleb Voronkov</p>
-    <h1>Systems that ship — with physics and papers attached</h1>
-    <p class="lead">Local RAG products, PLER 2.0 geometric fidelity, virtual production, and acoustic DSP. Move the sphere. Click every diagram.</p>
+    <h1 data-i18n="home.h1">Systems that ship — with physics and papers attached</h1>
+    <p class="lead" data-i18n="home.lead">Local RAG products, PLER 2.0 geometric fidelity, virtual production, and acoustic DSP. Move the sphere. Click every diagram.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="projects/index.html">Explore work</a>
-      <a class="btn btn-ghost" href="publications.html">Papers &amp; PDFs</a>
+      <a class="btn btn-primary" href="projects/index.html" data-i18n="home.ctaWork">Explore work</a>
+      <a class="btn btn-ghost" href="publications.html" data-i18n="home.ctaPubs">Papers &amp; PDFs</a>
     </div>
   </div>
   <div class="hero-stage" id="hero-canvas">
-    <span class="hint">Drag · Fibonacci sphere · PLER rays</span>
+    <span class="hint" data-i18n="home.hint">Drag · Fibonacci sphere · PLER rays</span>
   </div>
 </section>
 
 <section class="wrap">
   <div class="proof reveal">
-    <div class="proof-item"><strong>&lt; 5%</strong><span>MAPE · core-network 7-day forecast</span></div>
-    <div class="proof-item"><strong>PLER 2.0</strong><span>Fibonacci-sphere geometric fidelity</span></div>
-    <div class="proof-item"><strong>43.7 ms</strong><span>secondary-path IR peak @ 48 kHz</span></div>
+    <div class="proof-item"><strong>&lt; 5%</strong><span data-i18n="home.m1">MAPE · core-network 7-day forecast</span></div>
+    <div class="proof-item"><strong>PLER 2.0</strong><span data-i18n="home.m2">Fibonacci-sphere geometric fidelity</span></div>
+    <div class="proof-item"><strong>43.7 ms</strong><span data-i18n="home.m3">secondary-path IR peak @ 48 kHz</span></div>
   </div>
 </section>
 
 <section class="wrap" style="padding-top:1rem">
-  <p class="section-kicker">Selected work</p>
-  <h2 class="section-title">Interactive case studies</h2>
-  <p class="section-sub">Filter by domain. Each project page has a live SVG scheme — not a static PNG.</p>
+  <p class="section-kicker" data-i18n="home.kicker">Selected work</p>
+  <h2 class="section-title" data-i18n="home.title">Interactive case studies</h2>
+  <p class="section-sub" data-i18n="home.sub">Filter by domain. Each project page has a live SVG scheme — not a static PNG.</p>
   <div class="filters">
-    <button class="filter-btn active" data-filter="all" type="button">All</button>
-    <button class="filter-btn" data-filter="3d" type="button">3D / CV</button>
-    <button class="filter-btn" data-filter="llm" type="button">LLM</button>
-    <button class="filter-btn" data-filter="audio" type="button">Audio</button>
+    <button class="filter-btn active" data-filter="all" type="button" data-i18n="filter.all">All</button>
+    <button class="filter-btn" data-filter="3d" type="button" data-i18n="filter.3d">3D / CV</button>
+    <button class="filter-btn" data-filter="llm" type="button" data-i18n="filter.llm">LLM</button>
+    <button class="filter-btn" data-filter="audio" type="button" data-i18n="filter.audio">Audio</button>
   </div>
   <div class="work-grid">
     <a class="work-card reveal" data-tags="3d" href="projects/pler.html">
       <img src="assets/gallery/pler/01-comparison.png" alt="PLER" />
-      <div class="body"><p class="num">01 · Research</p><h3>PLER 2.0</h3><p>Geometric fidelity with interactive ray diagram</p></div>
+      <div class="body"><p class="num">01 · Research</p><h3>PLER 2.0</h3><p data-i18n="card.pler">Geometric fidelity with interactive ray diagram</p></div>
     </a>
     <a class="work-card reveal" data-tags="llm" href="projects/rag.html">
       <img src="assets/gallery/rag/01-ui.png" alt="RAG" />
-      <div class="body"><p class="num">02 · Product</p><h3>PS Core RAG</h3><p>Local Qwen pipeline you can step through</p></div>
+      <div class="body"><p class="num">02 · Product</p><h3>PS Core RAG</h3><p data-i18n="card.rag">Local Qwen pipeline you can step through</p></div>
     </a>
     <a class="work-card reveal" data-tags="audio" href="projects/anc.html">
       <img src="assets/gallery/anc/01-ir.png" alt="ANC" />
-      <div class="body"><p class="num">03 · DSP</p><h3>FxLMS ANC Lab</h3><p>Live cancellation loop + measured delay</p></div>
+      <div class="body"><p class="num">03 · DSP</p><h3>FxLMS ANC Lab</h3><p data-i18n="card.anc">Live cancellation loop + measured delay</p></div>
     </a>
     <a class="work-card reveal" data-tags="llm" href="projects/ai-team.html">
       <img src="assets/gallery/ai-team/01-ui.png" alt="Agents" />
-      <div class="body"><p class="num">04 · Agents</p><h3>AI Team</h3><p>Clickable LangGraph role graph</p></div>
+      <div class="body"><p class="num">04 · Agents</p><h3>AI Team</h3><p data-i18n="card.agents">Clickable LangGraph role graph</p></div>
     </a>
     <a class="work-card reveal" data-tags="3d" href="projects/bench.html">
       <img src="assets/gallery/bench/06-ui.png" alt="Bench" />
-      <div class="body"><p class="num">05 · Bench</p><h3>3D Quality Bench</h3><p>Degrade → metrics → MOS</p></div>
+      <div class="body"><p class="num">05 · Bench</p><h3>3D Quality Bench</h3><p data-i18n="card.bench">Degrade → metrics → MOS</p></div>
     </a>
     <a class="work-card reveal" data-tags="audio" href="projects/acoustic.html">
       <img src="assets/gallery/acoustic/01-ui.png" alt="Acoustic" />
-      <div class="body"><p class="num">06 · Audio</p><h3>Localization</h3><p>ILD/ITD stimulus lab</p></div>
+      <div class="body"><p class="num">06 · Audio</p><h3>Localization</h3><p data-i18n="card.acoustic">ILD/ITD stimulus lab</p></div>
     </a>
   </div>
 </section>
@@ -95,5 +108,6 @@
   <div>© 2026 Gleb Voronkov · MTUCI · Moscow</div>
   <div><a href="mailto:mybook3@mail.ru">mybook3@mail.ru</a> · <a href="https://t.me/Gleb_Voronkov">Telegram</a> · <a href="https://www.linkedin.com/in/glebvoronkov/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/GlebVoronkov03">GitHub</a></div>
 </div></footer>
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 </body></html>

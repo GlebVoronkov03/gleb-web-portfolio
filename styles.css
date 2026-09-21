@@ -407,3 +407,63 @@ body.reduce-motion .cursor, body.reduce-motion .cursor-ring { display: none !imp
 .nav-links .cv {
   border: 1px solid var(--line); padding: .35rem .7rem; border-radius: 999px; color: var(--text);
 }
+
+html[data-theme="light"] {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --elev: #eef2f7;
+  --line: rgba(15, 23, 42, 0.12);
+  --text: #0f172a;
+  --muted: #5b6575;
+  --teal: #0d9488;
+  --sky: #0284c7;
+  --warn: #c2410c;
+}
+html[data-theme="light"] body {
+  background:
+    radial-gradient(900px 500px at 10% -10%, rgba(13,148,136,.12), transparent 55%),
+    radial-gradient(700px 420px at 100% 0%, rgba(2,132,199,.10), transparent 50%),
+    var(--bg);
+}
+html[data-theme="light"] .site-header { background: rgba(244,247,251,.82); }
+html[data-theme="light"] .hero-stage {
+  background: linear-gradient(160deg, #e8eef6, #f8fafc);
+  border-color: var(--line);
+}
+html[data-theme="light"] .cursor { mix-blend-mode: multiply; }
+html[data-theme="light"] .btn-primary { color: #fff; }
+html[data-theme="light"] .diagram-shell,
+html[data-theme="light"] .demo-video,
+html[data-theme="light"] .pub,
+html[data-theme="light"] .work-card,
+html[data-theme="light"] .cover-band { background: var(--surface); }
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(900px 500px at 8% -8%, rgba(45,212,191,.08), transparent 55%),
+    radial-gradient(700px 420px at 100% 0%, rgba(56,189,248,.07), transparent 50%),
+    var(--bg);
+}
+.chrome-controls {
+  display: flex; align-items: center; gap: .45rem; margin-left: .25rem;
+}
+.theme-toggle, .lang-wrap select {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .02em;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: var(--elev); color: var(--text);
+  padding: .35rem .65rem; cursor: pointer;
+}
+.lang-wrap select {
+  padding-right: 1.4rem; appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 12px) 55%, calc(100% - 8px) 55%;
+  background-size: 4px 4px, 4px 4px; background-repeat: no-repeat;
+}
+.theme-toggle:hover, .lang-wrap select:hover { border-color: var(--teal); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+@media (max-width: 720px) {
+  .chrome-controls { width: 100%; justify-content: flex-end; }
+}
